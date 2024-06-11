@@ -1,0 +1,59 @@
+.dataTables_wrapper .row
+{
+    padding: 5px;
+}
+.dataTables_paginate .pagination
+{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.dataTables_filter
+{
+    display: flex;
+    justify-content: end;
+}
+.card-primary .card-header
+{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #696cff;
+    padding: 10px 25px;
+}
+.card-primary .card-title
+{
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+}
+.card-primary .card-body
+{
+    padding-top: 5px!important;
+}
+.form-card .card-body
+{
+    padding-top: 15px!important;
+}
+.required-star:after {
+    color: red;
+    content: " *";
+}
+.has-error .help-block
+{
+    font-size: 13px !important;
+    color: red !important;
+}
+
+.has-error .required
+{
+    border: 1px solid red !important;
+}
+.content-wrapper
+{
+    overflow: hidden !important;
+}
+
+
+#settings_nav .menu-item {
+    width: 100% !important;
+}

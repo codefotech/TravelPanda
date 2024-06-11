@@ -1,0 +1,102 @@
+
+/* ======================= Custom Start ============================ */
+
+.hr {
+  width: 30%;
+}
+
+.codefotech_color {
+  color: #fff !important;
+  border: 1px solid #1e81bb !important;
+  background: #1e81bb !important;
+}
+
+.codefotech_text_color {
+  color: #1e81bb !important;
+}
+.nav-link:focus,
+.nav-link:hover {
+  color: #1e81bb !important;
+}
+
+.btn-outline-codefotech {
+  color: #1e81bb !important;
+  border-color: #1e81bb !important;
+}
+
+.btn-outline-codefotech:hover {
+  color: #fff !important;
+  background-color: #1e81bb !important;
+  border-color: #1e81bb !important;
+}
+/* ======================= Custom End ============================ */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+body {
+  position: relative;
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.left-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+}
+
+
+#form-left {
+  position: relative;
+  background-image: url("../img/login_banner.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+#form-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0.7)), url("../img/login_banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1; /* Ensure the overlay is on top of the background but behind the content */
+}
+
+#form-left .container {
+  position: relative;
+  z-index: 2; /* Ensure the content is above the overlay */
+}
+
+
+  .form-control {
+	border: 2px solid #1e81bb !important;
+}
+.form-control:focus {
+	box-shadow: none !important;
+}
+
+.readonly, .readonly:active, .readonly:hover, .readonly:focus {
+	background: #ddd;
+}
+
+.otp-input {
+  width: 50px;
+  height: 50px;
+}
