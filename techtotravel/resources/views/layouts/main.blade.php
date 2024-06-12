@@ -31,6 +31,26 @@
     <link rel="stylesheet" href="{{ asset('assets-2/css/demo.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets-2/css/custom.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets-1/css/style.css') }}">
+    <style>
+        /*.menu-vertical {*/
+        /*    position: fixed;*/
+        /*    top: 100px;*/
+        /*    bottom: 0;*/
+        /*    height: calc(100vh - 3rem);*/
+        /*    overflow-y: auto;*/
+        /*}*/
+
+        /*.tab-content {*/
+        /*    margin-left: 25%;*/
+        /*    height: 100vh;*/
+        /*    overflow-y: auto;*/
+        /*    padding: 20px;*/
+        /*}*/
+
+        /*.menu-inner {*/
+        /*    height: calc(100vh - 3rem);*/
+        /*}*/
+    </style>
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('assets-2/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"/>

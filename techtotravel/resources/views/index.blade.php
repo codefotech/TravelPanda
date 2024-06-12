@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets-1/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-1/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-1/css/style.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('assets-1/css/custom.css') }}">--}}
 </head>
 
 <body>
@@ -117,44 +118,69 @@
                         <form>
                             <div class="form-group mb-3">
                                 <select class="form-control" id="select1">
-                                    <option selected disabled>Destination</option>
-                                    <option>Dhaka</option>
-                                    <option>Chottogram</option>
-                                    <option>Rajshahi</option>
+                                    <option value="Dhaka" selected disabled>--select destination--</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Chattogram">Chattogram</option>
+                                    <option value="Barishal">Barishal</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Khulna">Khulna</option>
+                                    <option value="Rajshahi">Rajshahi</option>
+                                    <option value="Rangpur">Rangpur</option>
+                                    <option value="Mymensingh">Mymensingh </option>
+                                    <option value="Sylhet">Sylhet</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <select class="form-control" id="select2">
-                                    <option selected disabled>
-                                        Trip Types
-                                    </option>
-                                    <option>Dhaka</option>
-                                    <option>Chottogram</option>
-                                    <option>Rajshahi</option>
+                                    <option value="Dhaka" selected disabled>--select trip types--</option>
+                                    <option value="Holiday Package">Holiday Package</option>
+                                    <option value="Full Of FamJam">Full Of FamJam</option>
+                                    <option value="Friends-Only Trip">Friends-Only Trip</option>
+                                    <option value="Siblings-Only Trip">Siblings-Only Trip</option>
+                                    <option value="All-Girls Or An All-Boys Trip">All-Girls Or An All-Boys Trip</option>
+                                    <option value="Volunteer Trip">Volunteer Trip</option>
+                                    <option value="Impromptu Trip">Impromptu Trip</option>
+                                    <option value="Solo Trip">Solo Trip </option>
+                                    <option value="Adventure Trip">Adventure Trip</option>
+                                    <option value="Luxury Trip">Luxury Trip</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <select class="form-control" id="select3">
-                                    <option selected disabled>Activity</option>
-                                    <option>Bike</option>
-                                    <option>Bus</option>
-                                    <option>Plane</option>
+                                    <option value="Dhaka" selected disabled>--select activities--</option>
+                                    <option value="Star Line">Star Line</option>
+                                    <option value="Green Line">Green Line</option>
+                                    <option value="Hanif Enterprise">Hanif Enterprise</option>
+                                    <option value="Shyamoli Paribahan">Shyamoli Paribahan</option>
+                                    <option value="Shohag Paribahan">Shohag Paribahan</option>
+                                    <option value="Ena Transport">Ena Transport</option>
+                                    <option value="London Express">London Express</option>
+                                    <option value="Saint Martin Paribahan">Saint Martin Paribahan </option>
+                                    <option value="Desh Travels">Desh Travels</option>
+                                    <option value="Saudia Paribahan">Saudia Paribahan</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <select class="form-control" id="select4">
-                                    <option> 0 Days - 5 Days</option>
-                                    <option> 0 Days - 7 Days</option>
-                                    <option> 0 Days - 14 Days</option>
-                                    <option> 0 Days - 30 Days</option>
+                                    <option value="Dhaka" selected disabled>--select days--</option>
+                                    <option value="0 Days - 1 Days">0 Days - 1 Days</option>
+                                    <option value="0 Days - 3 Days">0 Days - 3 Days</option>
+                                    <option value="0 Days - 5 Days">0 Days - 5 Days</option>
+                                    <option value="0 Days - 7 Days">0 Days - 7 Days</option>
+                                    <option value="0 Days - 10 Days">0 Days - 10 Days</option>
+                                    <option value="0 Days - 14 Days">0 Days - 14 Days</option>
+                                    <option value="0 Days - 30 Days">0 Days - 30 Days</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <select class="form-control" id="select5">
-                                    <option> $170 - $170</option>
-                                    <option> $0 - $100</option>
-                                    <option> $50 - $200</option>
-                                    <option> $500 - $1000</option>
+                                    <option value="Dhaka" selected disabled>--select package--</option>
+                                    <option value="$100 - $150">$100 - $150</option>
+                                    <option value="$150 - $200">$150 - $200</option>
+                                    <option value="$200 - $250">$200 - $250</option>
+                                    <option value="$250 - $350">$250 - $350</option>
+                                    <option value="$250 - $500">$250 - $500</option>
+                                    <option value="$500 - $1000">$500 - $1000</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-info w-100 codefotech_color">Search Button</button>
