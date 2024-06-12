@@ -14,10 +14,6 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function welcome()
-//    {
-//        return view("Settings::welcome");
-//    }
     public function index():View{
         return view("Settings::index");
     }
@@ -33,25 +29,13 @@ class SettingsController extends Controller
     public function generalContent(Request $request){
 
     }
-    public function email(Request $request){
-
-    }
-    public function newsAndTours(Request $request){
-
-    }
     public function homePage(Request $request){
 
     }
-    public function banner(Request $request){
+    public function contentQuantity(Request $request){
 
     }
-    public function payment(Request $request){
-
-    }
-    public function captcha(Request $request){
-
-    }
-    public function other(Request $request){
+    public function bannerTable(Request $request){
 
     }
 }

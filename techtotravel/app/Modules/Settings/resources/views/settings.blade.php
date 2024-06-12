@@ -2,7 +2,7 @@
     <div class="content-header">
         <div class="d-flex position-relative">
             <i style="font-size: 30px;top: 18px;" class="fas fa-arrow-alt-circle-right position-relative"></i>
-            <h2 class="py-3 pl-2">&nbsp; Settings Section</h2>
+            <h2 class="py-3 pl-2">&nbsp; General Settings</h2>
         </div>
     </div>
     <div class="row">
