@@ -329,23 +329,6 @@
 
                                                 <hr>
 
-                                                <div class="form-group pb-3">
-                                                    <label for="" class=control-label">Existing Background Photo</label>
-                                                    <div class="" style="padding-top:6px;">
-                                                        <img src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                                             class="hero-existing-photo" name="hero-existing-photo"
-                                                             style="height:80px;">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group pb-3">
-                                                    <label for="" class="control-label">New Background Photo</label>
-                                                    <div class="" style="padding-top:6px;">
-                                                        <input type="file" name="hero-new-photo" class="hero-new-photo">
-                                                    </div>
-                                                </div>
-
-                                                <hr>
-
                                                 <div class="form-group">
                                                     <label for="" class="col-sm-2 control-label"></label>
                                                     <div class="text-center">
@@ -491,24 +474,6 @@
                                                         <input type="text" name="counter_section_happy_customers"
                                                                class="form-control"
                                                                value="500+">
-                                                    </div>
-                                                </div>
-
-                                                <hr>
-
-                                                <div class="form-group pb-3">
-                                                    <label for="" class=control-label">Existing Background Photo</label>
-                                                    <div class="" style="padding-top:6px;">
-                                                        <img src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                                             class="counter-existing-photo" name="counter-existing-photo"
-                                                             style="height:80px;">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group pb-3">
-                                                    <label for="" class="control-label">New Background Photo</label>
-                                                    <div class="" style="padding-top:6px;">
-                                                        <input type="file" name="counter-new-photo"
-                                                               class="counter-new-photo">
                                                     </div>
                                                 </div>
 
@@ -684,7 +649,8 @@
                                                 <div class="form-group pb-3">
                                                     <label for="" class="control-label">New Photo</label>
                                                     <div class="" style="padding-top:6px;">
-                                                        <input type="file" name="place-new-photo" class="place-new-photo">
+                                                        <input type="file" name="place-new-photo"
+                                                               class="place-new-photo">
                                                     </div>
                                                 </div>
 
@@ -724,23 +690,6 @@
                                                     <div class="">
                                                 <textarea class="form-control" name="plan_section_content"
                                                           style="height:70px;">An epic adventure starts from you. After all its the journey that counts. So travel the world and find your own paradise today. Let us be a part of that.</textarea>
-                                                    </div>
-                                                </div>
-
-                                                <hr>
-
-                                                <div class="form-group pb-3">
-                                                    <label for="" class=control-label">Existing Background Photo</label>
-                                                    <div class="" style="padding-top:6px;">
-                                                        <img src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                                             class="plan-existing-photo" name="plan-existing-photo"
-                                                             style="height:80px;">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group pb-3">
-                                                    <label for="" class="control-label">New Background Photo</label>
-                                                    <div class="" style="padding-top:6px;">
-                                                        <input type="file" name="plan-new-photo" class="plan-new-photo">
                                                     </div>
                                                 </div>
 
@@ -790,14 +739,16 @@
                                                     <label for="" class=control-label">Existing Photo</label>
                                                     <div class="" style="padding-top:6px;">
                                                         <img src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                                             class="trip-activities-existing-photo" name="trip-activities-existing-photo"
+                                                             class="trip-activities-existing-photo"
+                                                             name="trip-activities-existing-photo"
                                                              style="height:80px;">
                                                     </div>
                                                 </div>
                                                 <div class="form-group pb-3">
                                                     <label for="" class="control-label">New Photo</label>
                                                     <div class="" style="padding-top:6px;">
-                                                        <input type="file" name="trip-activities-new-photo" class="trip-activities-new-photo">
+                                                        <input type="file" name="trip-activities-new-photo"
+                                                               class="trip-activities-new-photo">
                                                     </div>
                                                 </div>
 
@@ -827,14 +778,16 @@
                                                     <label for="" class=control-label">Existing Photo</label>
                                                     <div class="" style="padding-top:6px;">
                                                         <img src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                                             class="clients-existing-photo" name="clients-existing-photo"
+                                                             class="clients-existing-photo"
+                                                             name="clients-existing-photo"
                                                              style="height:80px;">
                                                     </div>
                                                 </div>
                                                 <div class="form-group pb-3">
                                                     <label for="" class="control-label">New Photo</label>
                                                     <div class="" style="padding-top:6px;">
-                                                        <input type="file" name="clients-new-photo" class="clients-new-photo">
+                                                        <input type="file" name="clients-new-photo"
+                                                               class="clients-new-photo">
                                                     </div>
                                                 </div>
 
@@ -861,25 +814,29 @@
                             <!-- Home Page Form End -->
 
                             <!-- Content Quantity Form Start -->
-                            <div class="tab-pane active" id="tab_5">
+                            <div class="tab-pane" id="tab_5">
                                 <form action="#" class="form-horizontal" enctype="multipart/form-data" method="post">
                                     <div class="card shadow-sm p-3">
                                         <div class="form-group pb-3">
                                             <label for="" class="control-label">Stunning Places -<span>*</span></label>
                                             <div class="">
-                                                <input type="text" class="form-control" name="about_section_stunning_places" value="200">
+                                                <input type="text" class="form-control"
+                                                       name="about_section_stunning_places" value="200">
                                             </div>
                                         </div>
                                         <div class="form-group pb-3">
-                                            <label for="" class="control-label">Satisfied Customer -<span>*</span></label>
+                                            <label for="" class="control-label">Satisfied Customer
+                                                -<span>*</span></label>
                                             <div class="">
-                                                <input type="text" class="form-control" name="about_section_satisfied_customer" value="200">
+                                                <input type="text" class="form-control"
+                                                       name="about_section_satisfied_customer" value="200">
                                             </div>
                                         </div>
                                         <div class="form-group pb-3">
                                             <label for="" class="control-label">Travel Places -<span>*</span></label>
                                             <div class="">
-                                                <input type="text" class="form-control" name="about_section_travel_places" value="400">
+                                                <input type="text" class="form-control"
+                                                       name="about_section_travel_places" value="400">
                                             </div>
                                         </div>
 
@@ -903,36 +860,79 @@
                             <div class="tab-pane active" id="tab_5">
                                 <form action="#" class="form-horizontal" enctype="multipart/form-data" method="post">
                                     <div class="card shadow-sm p-3">
-                                        <div class="form-group pb-3">
-                                            <label for="" class="control-label">Stunning Places -<span>*</span></label>
-                                            <div class="">
-                                                <input type="text" class="form-control" name="about_section_stunning_places" value="200">
-                                            </div>
-                                        </div>
-                                        <div class="form-group pb-3">
-                                            <label for="" class="control-label">Satisfied Customer -<span>*</span></label>
-                                            <div class="">
-                                                <input type="text" class="form-control" name="about_section_satisfied_customer" value="200">
-                                            </div>
-                                        </div>
-                                        <div class="form-group pb-3">
-                                            <label for="" class="control-label">Travel Places -<span>*</span></label>
-                                            <div class="">
-                                                <input type="text" class="form-control" name="about_section_travel_places" value="400">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                    <tr>
+                                                        <form
+                                                            action="https://demo.phpscriptpoint.com/travelfresh/admin/setting/update"
+                                                            class="" enctype="multipart/form-data" method="post"
+                                                            accept-charset="utf-8"></form>
+                                                        <td style="width:50%">
+                                                            <h4>Existing Hero Section Banner</h4>
+                                                            <p>
+                                                                <img
+                                                                    src="https://demo.phpscriptpoint.com/travelfresh/public/uploads/banner_about.jpg"
+                                                                    alt="" style="width: 100%;height:auto;">
+                                                            </p>
+                                                        </td>
+                                                        <td style="width:50%">
+                                                            <h4>Change Hero Section Banner</h4>
+                                                            Select Photo<input type="file" name="photo">
+                                                            <input type="submit" class="btn btn-primary btn-xs"
+                                                                   value="Change" style="margin-top:10px;"
+                                                                   name="form_banner_about">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <form
+                                                            action="https://demo.phpscriptpoint.com/travelfresh/admin/setting/update"
+                                                            class="" enctype="multipart/form-data" method="post"
+                                                            accept-charset="utf-8"></form>
+                                                        <td style="width:50%">
+                                                            <h4>Existing Counter Section Banner</h4>
+                                                            <p>
+                                                                <img
+                                                                    src="https://demo.phpscriptpoint.com/travelfresh/public/uploads/banner_faq.jpg"
+                                                                    alt="" style="width: 100%;height:auto;">
+                                                            </p>
+                                                        </td>
+                                                        <td style="width:50%">
+                                                            <h4>Change Counter Banner</h4>
+                                                            Select Photo<input type="file" name="photo">
+                                                            <input type="submit" class="btn btn-primary btn-xs"
+                                                                   value="Change" style="margin-top:10px;"
+                                                                   name="form_banner_faq">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <form
+                                                            action="https://demo.phpscriptpoint.com/travelfresh/admin/setting/update"
+                                                            class="" enctype="multipart/form-data" method="post"
+                                                            accept-charset="utf-8"></form>
+                                                        <td style="width:50%">
+                                                            <h4>Existing Plan Section Banner</h4>
+                                                            <p>
+                                                                <img
+                                                                    src="https://demo.phpscriptpoint.com/travelfresh/public/uploads/banner_faq.jpg"
+                                                                    alt="" style="width: 100%;height:auto;">
+                                                            </p>
+                                                        </td>
+                                                        <td style="width:50%">
+                                                            <h4>Change Plan Section Banner</h4>
+                                                            Select Photo<input type="file" name="photo">
+                                                            <input type="submit" class="btn btn-primary btn-xs"
+                                                                   value="Change" style="margin-top:10px;"
+                                                                   name="form_banner_faq">
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
 
-                                        <hr>
-
-                                        <div class="form-group">
-                                            <label for="" class="control-label"></label>
-                                            <div class="">
-                                                <button type="submit" class="btn btn-primary codefotech_color pull-left"
-                                                        name="form_general">
-                                                    Update
-                                                </button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </form>
                             </div>
