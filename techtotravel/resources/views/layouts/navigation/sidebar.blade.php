@@ -16,7 +16,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
         <li class="menu-item">
-            <a href="{{ url('/dashboard') }}" class="menu-link menu-toggle">
+            <a href="{{ url('/dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
@@ -30,22 +30,22 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/general_settings') }}" class="menu-link menu-toggle">
+                    <a href="{{ url('/dashboard/settings/general_settings') }}" class="menu-link">
                         <div>General Settings</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/email_configuration') }}" class="menu-link menu-toggle">
+                    <a href="{{ url('/dashboard/settings/email_configuration') }}" class="menu-link">
                         <div>Email Configuration</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/payment_configuration') }}" class="menu-link menu-toggle">
+                    <a href="{{ url('/dashboard/settings/payment_configuration') }}" class="menu-link">
                         <div>Payment Configuration</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/captcha_configuration') }}" class="menu-link menu-toggle">
+                    <a href="{{ url('/dashboard/settings/captcha_configuration') }}" class="menu-link">
                         <div>Captcha Configuration</div>
                     </a>
                 </li>

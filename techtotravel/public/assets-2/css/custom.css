@@ -54,6 +54,14 @@
 }
 
 
-#settings_nav .menu-item {
-    width: 100% !important;
+
+#settings_nav .nav-item {
+    width: 100%;
+}
+#settings_nav .nav-link {
+    justify-content: left !important;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #1e81bb !important;
 }
