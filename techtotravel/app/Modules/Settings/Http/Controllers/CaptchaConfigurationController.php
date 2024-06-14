@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Settings\Models\CaptchaConfiguration;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Mockery\Exception;
 
 class CaptchaConfigurationController extends Controller
 {
@@ -26,15 +27,22 @@ class CaptchaConfigurationController extends Controller
     }
 
     public function captchaConfigurationCreate(Request $request){
-        CaptchaConfiguration::create([
-            'recaptcha_site_key' => $request->input('recaptcha_site_key'),
-            'recaptcha_status' => $request->input('recaptcha_status'),
-        ]);
+        try {
+            CaptchaConfiguration::create([
+                'recaptcha_site_key' => $request->input('recaptcha_site_key'),
+                'recaptcha_status' => $request->input('recaptcha_status'),
+            ]);
 
-        return response()->json([
-            'success' => 'success',
-            'message' => 'Captcha Configuration Created Successfully!!'
-        ], 201);
+            return response()->json([
+                'success' => 'success',
+                'message' => 'Captcha Configuration Created Successfully!!'
+            ], 201);
+        } catch (Exception $exception) {
+            return response()->json([
+                'success' => 'failure',
+                'message' => $exception->getMessage()
+            ], 404);
+        }
     }
 
     public function captchaConfigurationDelete(Request $request){

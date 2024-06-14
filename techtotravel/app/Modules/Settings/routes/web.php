@@ -9,50 +9,46 @@ use App\Modules\Settings\Http\Controllers\GeneralSettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(array('Module'=>'Dashboard, Settings'), function () {
-    Route::get('/dashboard/settings/general_settings', [GeneralSettingsController::class, 'generalSettings']);
-    Route::get('/dashboard/settings/email_configuration', [EmailConfigurationController::class, 'emailConfiguration']);
-    Route::get('/dashboard/settings/payment_configuration', [PaymentConfigurationController::class, 'paymentConfiguration']);
-    Route::get('/dashboard/settings/captcha_configuration', [CaptchaConfigurationController::class, 'captchaConfiguration']);
+    //    web routes ---------------------------
+    Route::get('/dashboard/settings/generalSettings', [GeneralSettingsController::class, 'generalSettings']);
+    Route::get('/dashboard/settings/emailConfiguration', [EmailConfigurationController::class, 'emailConfiguration']);
+    Route::get('/dashboard/settings/paymentConfiguration', [PaymentConfigurationController::class, 'paymentConfiguration']);
+    Route::get('/dashboard/settings/captchaConfiguration', [CaptchaConfigurationController::class, 'captchaConfiguration']);
 
-    Route::prefix('/dashboard/settings/email_configuration')->group(function () {
-        Route::match(['get', 'post'], '/', [EmailConfigurationController::class, 'emailConfigurationList'])->name('email_configuration.list');
-        Route::get('create', [EmailConfigurationController::class, 'emailConfigurationCreate'])->name('email_configuration.create');
-        Route::get('delete', [EmailConfigurationController::class, 'emailConfigurationDelete'])->name('email_configuration.delete');
-        Route::get('edit/{id}', [EmailConfigurationController::class, 'emailConfigurationUpdate'])->name('email_configuration.edit');
-        Route::get('id_check', [EmailConfigurationController::class, 'emailConfigurationIdCheck'])->name('email_configuration.id_check');
-    });
 
-    Route::prefix('/dashboard/settings/captcha_configuration')->group(function () {
-        Route::match(['get', 'post'], '/', [CaptchaConfigurationController::class, 'captchaConfigurationList'])->name('captcha_configuration.list');
-        Route::get('create', [CaptchaConfigurationController::class, 'captchaConfigurationCreate'])->name('captcha_configuration.create');
-        Route::get('delete', [CaptchaConfigurationController::class, 'captchaConfigurationDelete'])->name('captcha_configuration.delete');
-        Route::get('edit/{id}', [CaptchaConfigurationController::class, 'captchaConfigurationUpdate'])->name('captcha_configuration.edit');
-        Route::get('id_check', [CaptchaConfigurationController::class, 'captchaConfigurationIdCheck'])->name('captcha_configuration.id_check');
-    });
 
-    Route::prefix('/dashboard/settings/payment_configuration')->group(function () {
-        Route::match(['get', 'post'], '/', [PaymentConfigurationController::class, 'paymentConfigurationList'])->name('payment_configuration.list');
-        Route::get('create', [PaymentConfigurationController::class, 'paymentConfigurationCreate'])->name('payment_configuration.create');
-        Route::get('delete', [PaymentConfigurationController::class, 'paymentConfigurationDelete'])->name('payment_configuration.delete');
-        Route::get('edit/{id}', [PaymentConfigurationController::class, 'paymentConfigurationUpdate'])->name('payment_configuration.edit');
-        Route::get('id_check', [PaymentConfigurationController::class, 'paymentConfigurationIdCheck'])->name('payment_configuration.id_check');
-    });
 
-    Route::prefix('/dashboard/settings/general_settings')->group(function () {
-        Route::match(['get', 'post'], '/', [GeneralSettingsController::class, 'generalSettingsList'])->name('general_settings.list');
-        Route::get('create', [GeneralSettingsController::class, 'generalSettingsCreate'])->name('general_settings.create');
-        Route::get('delete', [GeneralSettingsController::class, 'generalSettingsDelete'])->name('general_settings.delete');
-        Route::get('edit/{id}', [GeneralSettingsController::class, 'generalSettingsUpdate'])->name('general_settings.edit');
-        Route::get('id_check', [GeneralSettingsController::class, 'generalSettingsIdCheck'])->name('general_settings.id_check');
-    });
 
-    Route::prefix('/dashboard/settings/home_page')->group(function () {
-        Route::match(['get', 'post'], '/', [HomePageController::class, 'homePageList'])->name('home_page.list');
-        Route::get('create', [HomePageController::class, 'homePageCreate'])->name('home_page.create');
-        Route::get('delete', [HomePageController::class, 'homePageDelete'])->name('home_page.delete');
-        Route::get('edit/{id}', [HomePageController::class, 'homePageUpdate'])->name('home_page.edit');
-        Route::get('id_check', [HomePageController::class, 'homePageIdCheck'])->name('home_page.id_check');
-    });
+    //    api routes ---------------------------
+    Route::get('/dashboard/settings/email_configuration', [EmailConfigurationController::class, 'emailConfigurationList']);
+    Route::get('/dashboard/settings/email_configuration/create', [EmailConfigurationController::class, 'emailConfigurationCreate']);
+    Route::get('/dashboard/settings/email_configuration/delete/{id}', [EmailConfigurationController::class, 'emailConfigurationDelete']);
+    Route::get('/dashboard/settings/email_configuration/update/{id}', [EmailConfigurationController::class, 'emailConfigurationUpdate']);
+    Route::get('/dashboard/settings/email_configuration/id_check/{id}', [EmailConfigurationController::class, 'emailConfigurationIdCheck']);
+
+    Route::get('/dashboard/settings/captcha_configuration', [CaptchaConfigurationController::class, 'captchaConfigurationList']);
+    Route::get('/dashboard/settings/captcha_configuration/create', [CaptchaConfigurationController::class, 'captchaConfigurationCreate']);
+    Route::get('/dashboard/settings/captcha_configuration/delete/{id}', [CaptchaConfigurationController::class, 'captchaConfigurationDelete']);
+    Route::get('/dashboard/settings/captcha_configuration/update/{id}', [CaptchaConfigurationController::class, 'captchaConfigurationUpdate']);
+    Route::get('/dashboard/settings/captcha_configuration/id_check/{id}', [CaptchaConfigurationController::class, 'captchaConfigurationIdCheck']);
+
+    Route::get('/dashboard/settings/payment_configuration', [PaymentConfigurationController::class, 'paymentConfigurationList']);
+    Route::get('/dashboard/settings/payment_configuration/create', [PaymentConfigurationController::class, 'paymentConfigurationCreate']);
+    Route::get('/dashboard/settings/payment_configuration/delete/{id}', [PaymentConfigurationController::class, 'paymentConfigurationDelete']);
+    Route::get('/dashboard/settings/payment_configuration/update/{id}', [PaymentConfigurationController::class, 'paymentConfigurationUpdate']);
+    Route::get('/dashboard/settings/payment_configuration/id_check/{id}', [PaymentConfigurationController::class, 'paymentConfigurationIdCheck']);
+
+    Route::get('/dashboard/settings/general_settings', [GeneralSettingsController::class, 'generalSettingsList']);
+    Route::get('/dashboard/settings/general_settings/create', [GeneralSettingsController::class, 'generalSettingsCreate']);
+    Route::get('/dashboard/settings/general_settings/delete/{id}', [GeneralSettingsController::class, 'generalSettingsDelete']);
+    Route::get('/dashboard/settings/general_settings/update/{id}', [GeneralSettingsController::class, 'generalSettingsUpdate']);
+    Route::get('/dashboard/settings/general_settings/id_check/{id}', [GeneralSettingsController::class, 'generalSettingsIdCheck']);
+
+    Route::get('/dashboard/settings/home_page', [HomePageController::class, 'homePageList']);
+    Route::get('/dashboard/settings/home_page/create', [HomePageController::class, 'homePageCreate']);
+    Route::get('/dashboard/settings/home_page/delete/{id}', [HomePageController::class, 'homePageDelete']);
+    Route::get('/dashboard/settings/home_page/update/{id}', [HomePageController::class, 'homePageUpdate']);
+    Route::get('/dashboard/settings/home_page/id_check/{id}', [HomePageController::class, 'homePageIdCheck']);
 
 });
 

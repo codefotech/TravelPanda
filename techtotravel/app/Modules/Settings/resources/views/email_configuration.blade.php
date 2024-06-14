@@ -20,37 +20,43 @@
                                 <div class="form-group pb-3">
                                     <label for="" class="control-label">Send Email From <span>*</span></label>
                                     <div class="">
-                                        <input type="text" class="form-control" name="send_email_from" maxlength="255" autocomplete="off" value="contact@yourwebsite.com">
+                                        <input type="text" class="form-control" name="update_send_email" maxlength="255" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group pb-3">
                                     <label for="" class="control-label">Receive Email To <span>*</span></label>
                                     <div class="">
-                                        <input type="text" class="form-control" name="receive_email_to" maxlength="255" autocomplete="off" value="youremail@gmail.com">
+                                        <input type="text" class="form-control" name="update_receive_email" maxlength="255" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group pb-3">
                                     <label for="" class="control-label">SMTP Host</label>
                                     <div class="">
-                                        <input type="text" class="form-control" name="smtp_host" maxlength="255" autocomplete="off" value="sandbox.smtp.mailtrap.io">
+                                        <input type="text" class="form-control" name="update_smtp_host" maxlength="255" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group pb-3">
                                     <label for="" class="control-label">SMTP Port</label>
                                     <div class="">
-                                        <input type="text" class="form-control" name="smtp_port" maxlength="255" autocomplete="off" value="2525">
+                                        <input type="text" class="form-control" name="update_smtp_port" maxlength="255" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group pb-3">
                                     <label for="" class="control-label">SMTP Username</label>
                                     <div class="">
-                                        <input type="text" class="form-control" name="smtp_username" maxlength="255" autocomplete="off" value="abbaeaf38f5fe2">
+                                        <input type="text" class="form-control" name="update_smtp_user" maxlength="255" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group pb-3">
                                     <label for="" class="control-label">SMTP Password</label>
                                     <div class="">
-                                        <input type="text" class="form-control" name="smtp_password" maxlength="255" autocomplete="off" value="b0bc6b2191d0fe">
+                                        <input type="text" class="form-control" name="update_smtp_password" maxlength="255" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group pb-3">
+                                    <label for="" class="control-label">Update Id</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" id="updateId" readonly>
                                     </div>
                                 </div>
 
@@ -71,4 +77,19 @@
         </div>
     </div>
 </div>
+
+
+
+<script>
+    async function FillUpdateForm(id){
+        document.getElementById('updateId').value=id;
+        let res = await axios.post('/dashboard/settings/email_configuration/id_check',{id:id});
+        document.getElementsByName('update_send_email').value = res.data['send_email'];
+        document.getElementsByName('update_receive_email').value = res.data['receive_email'];
+        document.getElementsByName('update_smtp_host').value = res.data['smtp_host'];
+        document.getElementsByName('update_smtp_port').value = res.data['smtp_port'];
+        document.getElementsByName('update_smtp_user').value = res.data['smtp_user'];
+        document.getElementsByName('update_smtp_password').value = res.data['smtp_password'];
+    }
+</script>
 @endsection

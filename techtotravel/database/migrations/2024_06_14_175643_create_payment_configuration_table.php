@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('payment_email', 100);
             $table->string('stripe_public_key');
             $table->string('stripe_secret_key');
-            $table->string('bank_details');
+            $table->json('bank_details');
             $table->timestamps();
         });
     }

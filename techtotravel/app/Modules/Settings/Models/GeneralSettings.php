@@ -12,14 +12,14 @@ class GeneralSettings extends Model
     protected $table = 'general_settings';
 
     protected $fillable = [
-        'logo',
-        'favicon',
+        'logo', // image path
+        'favicon', // image path
         'email',
         'phone',
         'address',
         'copyright_text',
         'social_icon',
         'social_icon_url',
-        'banner',
+        'banner', // image path
     ];
 }

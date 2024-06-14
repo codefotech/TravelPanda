@@ -30,22 +30,22 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/general_settings') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/generalSettings') }}" class="menu-link">
                         <div>General Settings</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/email_configuration') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/emailConfiguration') }}" class="menu-link">
                         <div>Email Configuration</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/payment_configuration') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/paymentConfiguration') }}" class="menu-link">
                         <div>Payment Configuration</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/captcha_configuration') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/captchaConfiguration') }}" class="menu-link">
                         <div>Captcha Configuration</div>
                     </a>
                 </li>
