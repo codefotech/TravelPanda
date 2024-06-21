@@ -37,12 +37,24 @@
     <link rel="stylesheet" href="{{ asset('assets-2/vendor/libs/apex-charts/apex-charts.css') }}"/>
 
     <!-- Page CSS -->
+{{--    <script src="{{ asset('assets-1/css/others/toastify.min.css') }}"></script>--}}
+{{--    <script src="{{ asset('assets-1/js/others/jquery.toastify.js') }}"></script>--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- Helpers -->
     <script src="{{ asset('assets-2/vendor/js/helpers.js') }}"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets-2/js/config.js') }}"></script>
+
+
+{{--    <script src="{{ asset('assets-1/css/others/jquery.dataTables.min.css') }}"></script>--}}
+{{--    <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets-1/js/others/jquery.sticky.js') }}"></script>--}}
+
+    <script src="{{ asset('assets-1/js/others/axios.min.js') }}"></script>
+    <script src="{{ asset('assets-1/js/others/config.js') }}"></script>
+
+
     @yield('header-resources')
 </head>
 
@@ -87,8 +99,7 @@
 <!-- Page JS -->
 <script src="{{ asset('assets-2/js/dashboards-analytics.js') }}"></script>
 
-<!-- Place this tag in your head or just before your close body tag. -->
-<!--    <script async defer src="https://buttons.github.io/buttons.js"></script>-->
+
 
 @yield('footer-script')
 </body>

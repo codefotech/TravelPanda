@@ -20,11 +20,11 @@ Route::group(array('Module'=>'Dashboard, Settings'), function () {
 
 
     //    api routes ---------------------------
-    Route::get('/dashboard/settings/email_configuration', [EmailConfigurationController::class, 'emailConfigurationList']);
+    Route::get('/dashboard/settings/email_configuration', [EmailConfigurationController::class, 'getEmailConfiguration']);
     Route::get('/dashboard/settings/email_configuration/create', [EmailConfigurationController::class, 'emailConfigurationCreate']);
-    Route::get('/dashboard/settings/email_configuration/delete/{id}', [EmailConfigurationController::class, 'emailConfigurationDelete']);
-    Route::get('/dashboard/settings/email_configuration/update/{id}', [EmailConfigurationController::class, 'emailConfigurationUpdate']);
-    Route::get('/dashboard/settings/email_configuration/id_check/{id}', [EmailConfigurationController::class, 'emailConfigurationIdCheck']);
+    Route::post('/dashboard/settings/email_configuration/update', [EmailConfigurationController::class, 'emailConfigurationUpdate']);
+
+
 
     Route::get('/dashboard/settings/captcha_configuration', [CaptchaConfigurationController::class, 'captchaConfigurationList']);
     Route::get('/dashboard/settings/captcha_configuration/create', [CaptchaConfigurationController::class, 'captchaConfigurationCreate']);
