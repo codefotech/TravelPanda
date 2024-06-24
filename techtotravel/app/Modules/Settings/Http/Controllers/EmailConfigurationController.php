@@ -23,33 +23,6 @@ class EmailConfigurationController extends Controller
 
 
 
-    public function emailConfigurationCreate(Request $request)
-    {
-        try {
-            EmailConfiguration::create([
-                'send_email' => $request->input('send_email'),
-                'receive_email' => $request->input('receive_email'),
-                'smtp_host' => $request->input('smtp_host'),
-                'smtp_port' => $request->input('smtp_port'),
-                'smtp_user' => $request->input('smtp_user'),
-                'smtp_password' => $request->input('smtp_password'),
-            ]);
-
-            return response()->json([
-                'success' => 'success',
-                'message' => 'Email Configuration Created Successfully!!'
-            ], 201);
-        } catch (Exception $exception) {
-            return response()->json([
-                'success' => 'failure',
-                'message' => $exception->getMessage()
-            ], 404);
-        }
-    }
-
-
-
-
     public function getEmailConfiguration()
     {
         try {
@@ -70,7 +43,7 @@ class EmailConfigurationController extends Controller
                 'data' => $emailData
             ], 200);
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Failed to fetch email configuration',
@@ -79,7 +52,29 @@ class EmailConfigurationController extends Controller
         }
     }
 
+    public function emailConfigurationCreate(Request $request)
+    {
+        try {
+            EmailConfiguration::create([
+                'send_email' => $request->input('send_email'),
+                'receive_email' => $request->input('receive_email'),
+                'smtp_host' => $request->input('smtp_host'),
+                'smtp_port' => $request->input('smtp_port'),
+                'smtp_user' => $request->input('smtp_user'),
+                'smtp_password' => $request->input('smtp_password')
+            ]);
 
+            return response()->json([
+                'success' => 'success',
+                'message' => 'Email Configuration Created Successfully!!'
+            ], 201);
+        } catch (Exception $exception) {
+            return response()->json([
+                'success' => 'failure',
+                'message' => $exception->getMessage()
+            ], 404);
+        }
+    }
 
     public function emailConfigurationUpdate(Request $request)
     {
@@ -93,20 +88,13 @@ class EmailConfigurationController extends Controller
                 ], 404);
             }
 
-            $sendEmail = $request->input('send_email');
-            $receiveEmail = $request->input('receive_email');
-            $smtpHost = $request->input('smtp_host');
-            $smtpPort = $request->input('smtp_port');
-            $smtpUser = $request->input('smtp_user');
-            $smtpPassword = $request->input('smtp_password');
-
             $emailConfiguration->update([
-                'send_email' => $sendEmail,
-                'receive_email' => $receiveEmail,
-                'smtp_host' => $smtpHost,
-                'smtp_port' => $smtpPort,
-                'smtp_user' => $smtpUser,
-                'smtp_password' => $smtpPassword,
+                'send_email' => $request->input('send_email'),
+                'receive_email' => $request->input('receive_email'),
+                'smtp_host' => $request->input('smtp_host'),
+                'smtp_port' => $request->input('smtp_port'),
+                'smtp_user' => $request->input('smtp_user'),
+                'smtp_password' => $request->input('smtp_password')
             ]);
 
             return response()->json([

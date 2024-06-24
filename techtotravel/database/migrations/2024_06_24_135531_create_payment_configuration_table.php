@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('payment_configuration', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_email', 100);
-            $table->string('stripe_public_key');
-            $table->string('stripe_secret_key');
-            $table->json('bank_details');
+            $table->string('paypal_email')->nullable();
+            $table->string('stripe_public_key')->nullable();
+            $table->string('stripe_secret_key')->nullable();
+            $table->json('bank_details')->nullable();
             $table->timestamps();
         });
     }

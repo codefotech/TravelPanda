@@ -20,6 +20,9 @@ class GeneralSettings extends Model
         'copyright_text',
         'social_icon',
         'social_icon_url',
+        'stunning_place',
+        'satisfied_customer',
+        'travel_places',
         'banner', // image path
     ];
 }

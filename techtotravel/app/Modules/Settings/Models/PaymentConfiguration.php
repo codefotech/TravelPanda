@@ -12,9 +12,13 @@ class PaymentConfiguration extends Model
     protected $table = 'payment_configuration';
 
     protected $fillable = [
-        'payment_email',
+        'paypal_email',
         'stripe_public_key',
         'stripe_secret_key',
         'bank_details',
+    ];
+
+    protected $casts = [
+        'bank_details' => 'array',
     ];
 }

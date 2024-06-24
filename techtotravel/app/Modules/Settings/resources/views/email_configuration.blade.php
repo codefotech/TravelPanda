@@ -22,51 +22,45 @@
                                         <label for="update_send_email" class="control-label">Send Email From
                                             <span>*</span></label>
                                         <div class="">
-                                            <input type="text" class="form-control" name="update_send_email"
-                                                   id="update_send_email" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="send_email" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
                                         <label for="update_receive_email" class="control-label">Receive Email To
                                             <span>*</span></label>
                                         <div class="">
-                                            <input type="text" class="form-control" name="update_receive_email"
-                                                   id="update_receive_email" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="receive_email" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
                                         <label for="update_smtp_host" class="control-label">SMTP Host</label>
                                         <div class="">
-                                            <input type="text" class="form-control" name="update_smtp_host"
-                                                   id="update_smtp_host" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="smtp_host" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
                                         <label for="update_smtp_port" class="control-label">SMTP Port</label>
                                         <div class="">
-                                            <input type="text" class="form-control" name="update_smtp_port"
-                                                   id="update_smtp_port" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="smtp_port" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
                                         <label for="update_smtp_user" class="control-label">SMTP Username</label>
                                         <div class="">
-                                            <input type="text" class="form-control" name="update_smtp_user"
-                                                   id="update_smtp_user" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="smtp_user" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
                                         <label for="update_smtp_password" class="control-label">SMTP Password</label>
                                         <div class="">
-                                            <input type="password" class="form-control" name="update_smtp_password"
-                                                   id="update_smtp_password" maxlength="255" autocomplete="off">
+                                            <input type="password" class="form-control" id="smtp_password" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="">
                                             <button class="btn btn-primary codefotech_color pull-left"
-                                                    onclick="Update()" name="form_general">Update
+                                                    onclick="updateEmailConfiguration()">Update
                                             </button>
                                         </div>
                                     </div>
@@ -80,20 +74,18 @@
     </div>
 
     <script>
-        getEmailConfiguration();
-
 
         async function getEmailConfiguration() {
             try {
                 let res = await axios.get('/dashboard/settings/email_configuration');
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
-                    document.getElementById('update_send_email').value = data.send_email;
-                    document.getElementById('update_receive_email').value = data.receive_email;
-                    document.getElementById('update_smtp_host').value = data.smtp_host;
-                    document.getElementById('update_smtp_port').value = data.smtp_port;
-                    document.getElementById('update_smtp_user').value = data.smtp_user;
-                    document.getElementById('update_smtp_password').value = data.smtp_password;
+                    document.getElementById('send_email').value = data.send_email;
+                    document.getElementById('receive_email').value = data.receive_email;
+                    document.getElementById('smtp_host').value = data.smtp_host;
+                    document.getElementById('smtp_port').value = data.smtp_port;
+                    document.getElementById('smtp_user').value = data.smtp_user;
+                    document.getElementById('smtp_password').value = data.smtp_password;
                 } else {
                     errorToast('Failed to fetch email configuration');
                 }
@@ -104,55 +96,56 @@
         }
 
 
-        async function Update() {
+        async function updateEmailConfiguration() {
             event.preventDefault();
             try {
-                let updateSendEmail = document.getElementById('update_send_email').value;
-                let updateReceiveEmail = document.getElementById('update_receive_email').value;
-                let updateSMTPHost = document.getElementById('update_smtp_host').value;
-                let updateSMTPPort = document.getElementById('update_smtp_port').value;
-                let updateSMTPUser = document.getElementById('update_smtp_user').value;
-                let updateSMTPPassword = document.getElementById('update_smtp_password').value;
+                let updateSendEmail = document.getElementById('send_email').value;
+                let updateReceiveEmail = document.getElementById('receive_email').value;
+                let updateSMTPHost = document.getElementById('smtp_host').value;
+                let updateSMTPPort = document.getElementById('smtp_port').value;
+                let updateSMTPUser = document.getElementById('smtp_user').value;
+                let updateSMTPPassword = document.getElementById('smtp_password').value;
 
                 if (!updateSendEmail) {
                     return errorToast("Send Email Required!");
-                }
-                if (!updateReceiveEmail) {
+                } else if (!updateReceiveEmail) {
                     return errorToast("Receive Email Required!");
-                }
-                if (!updateSMTPHost) {
+                } else if (!updateSMTPHost) {
                     return errorToast("SMTP Host Required!");
-                }
-                if (!updateSMTPPort) {
+                } else if (!updateSMTPPort) {
                     return errorToast("SMTP Port Required!");
-                }
-                if (!updateSMTPUser) {
+                } else if (!updateSMTPUser) {
                     return errorToast("SMTP User Required!");
-                }
-                if (!updateSMTPPassword) {
+                } else if (!updateSMTPPassword) {
                     return errorToast("SMTP Password Required!");
-                }
-
-                let res = await axios.post('/dashboard/settings/email_configuration/update', {
-                    send_email: updateSendEmail,
-                    receive_email: updateReceiveEmail,
-                    smtp_host: updateSMTPHost,
-                    smtp_port: updateSMTPPort,
-                    smtp_user: updateSMTPUser,
-                    smtp_password: updateSMTPPassword,
-                });
-
-                if (res.status === 200 && res.data['status'] === 'success') {
-                    successToast(res.data['message']);
-                    await getEmailConfiguration();
                 } else {
-                    errorToast(res.data['message']);
+                    let res = await axios.post('/dashboard/settings/email_configuration/update', {
+                        send_email: updateSendEmail,
+                        receive_email: updateReceiveEmail,
+                        smtp_host: updateSMTPHost,
+                        smtp_port: updateSMTPPort,
+                        smtp_user: updateSMTPUser,
+                        smtp_password: updateSMTPPassword,
+                    });
+
+                    if (res.status === 200 && res.data['status'] === 'success') {
+                        successToast(res.data['message']);
+                        await getEmailConfiguration();
+                    } else {
+                        errorToast(res.data['message']);
+                    }
                 }
+
             } catch (error) {
                 console.error('Error updating email configuration:', error);
                 errorToast('An error occurred while updating email configuration');
             }
         }
+
+        // Initial fetch of payment configuration data when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            await getEmailConfiguration();
+        });
     </script>
 
 @endsection

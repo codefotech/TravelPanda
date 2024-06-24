@@ -15,12 +15,16 @@
 {{--    <link rel="stylesheet" href="{{ asset('assets-1/css/custom.css') }}">--}}
 
     <!-- Page CSS -->
-    <script src="{{ asset('assets-1/css/others/progress.css') }}"></script>
-    <script src="{{ asset('assets-1/css/others/toastify.min.css') }}"></script>
+    {{--    <script src="{{ asset('assets-1/css/others/toastify.min.css') }}"></script>--}}
+    {{--    <script src="{{ asset('assets-1/js/others/jquery.toastify.js') }}"></script>--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-    <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets-1/js/others/jquery.sticky.js') }}"></script>
-    <script src="{{ asset('assets-1/js/others/jquery.toastify.js') }}"></script>
+
+    {{--    <script src="{{ asset('assets-1/css/others/jquery.dataTables.min.css') }}"></script>--}}
+    {{--    <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>--}}
+    {{--    <script src="{{ asset('assets-1/js/others/jquery.sticky.js') }}"></script>--}}
+
     <script src="{{ asset('assets-1/js/others/axios.min.js') }}"></script>
     <script src="{{ asset('assets-1/js/others/config.js') }}"></script>
 </head>

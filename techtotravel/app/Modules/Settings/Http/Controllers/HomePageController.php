@@ -4,6 +4,7 @@ namespace App\Modules\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Settings\Models\HomePage;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,47 +17,98 @@ class HomePageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function homePageList(Request $request){
-        return HomePage::all();
-    }
-    public function homePageCreate(Request $request){
+    public function getHomePage()
+    {
+        try {
+            $homePage = HomePage::first();
 
-    }
-    public function homePageDelete(Request $request){
-        $home_page_id = $request->input('id');
-        $homePage = HomePage::find($home_page_id);
+            if (!$homePage) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Home Page Not Found!!'
+                ], 404);
+            }
 
-        if ($homePage) {
-            $homePage->delete();
+            $homePageData = $homePage->toArray();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Home Page Retrieved Successfully',
+                'data' => $homePageData
+            ], 200);
+
+        } catch (Exception $exception) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to fetch home page',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
+    }
+
+    public function homePageCreate(Request $request)
+    {
+        try {
+            HomePage::create([
+                'logo' => $request->input('logo'),
+                'favicon' => $request->input('favicon'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'address' => $request->input('address'),
+                'copyright_text' => $request->input('copyright_text'),
+                'social_icon' => $request->input('social_icon'),
+                'social_icon_url' => $request->input('social_icon_url'),
+                'banner' => $request->input('banner')
+            ]);
+
             return response()->json([
                 'success' => 'success',
-                'message' => 'Home Page Deleted Successfully!!'
-            ], 200);
-        }
-
-        return response()->json([
-            'success' => 'failure',
-            'message' => 'Home Page Not Found!!'
-        ], 404);
-    }
-    public function homePageUpdate(Request $request){
-
-    }
-    public function homePageIdCheck(Request $request){
-        $home_page_id = $request->input('id');
-        $homePage = HomePage::find($home_page_id);
-
-        if ($homePage) {
+                'message' => 'Home Page Created Successfully!!'
+            ], 201);
+        } catch (Exception $exception) {
             return response()->json([
-                'success' => 'success',
-                'message' => 'Home Page Found'
-            ], 200);
+                'success' => 'failure',
+                'message' => $exception->getMessage()
+            ], 404);
         }
+    }
 
-        return response()->json([
-            'success' => 'failure',
-            'message' => 'Home Page Not Found'
-        ], 404);
+    public function homePageUpdate(Request $request)
+    {
+        try {
+            $homePage = HomePage::first();
+
+            if (!$homePage) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Home Page Not Found!!'
+                ], 404);
+            }
+
+            $homePage->update([
+                'logo' => $request->input('logo'),
+                'favicon' => $request->input('favicon'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'address' => $request->input('address'),
+                'copyright_text' => $request->input('copyright_text'),
+                'social_icon' => $request->input('social_icon'),
+                'social_icon_url' => $request->input('social_icon_url'),
+                'banner' => $request->input('banner')
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Home Page Updated Successfully!!',
+            ], 200);
+
+        } catch (Exception $exception) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Update Failed',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
     }
 
 

@@ -22,97 +22,122 @@ class PaymentConfigurationController extends Controller
 
 
 
-    public function paymentConfigurationList(Request $request){
-        return PaymentConfiguration::all();
+
+
+
+    public function getPaymentConfiguration()
+    {
+        try {
+            $paymentConfiguration = PaymentConfiguration::first();
+
+            if (!$paymentConfiguration) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Payment Configuration Not Found!!'
+                ], 404);
+            }
+
+            $paymentConfigurationData = $paymentConfiguration->toArray();
+
+            // Decode bank_details JSON field
+            $bankDetails = json_decode($paymentConfiguration->bank_details, true);
+            $paymentConfigurationData['bank_details'] = $bankDetails;
+
+            // Return data in JSON format
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Payment Configuration Retrieved Successfully',
+                'data' => $paymentConfigurationData
+            ], 200);
+
+        } catch (Exception $exception) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to fetch payment configuration',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
     }
 
-    public function paymentConfigurationCreate(Request $request){
-        try {
-            $paymentConfiguration = new PaymentConfiguration();
-            $paymentConfiguration->payment_email = $request->input('payment_email');
-            $paymentConfiguration->stripe_public_key = $request->input('stripe_public_key');
-            $paymentConfiguration->stripe_secret_key = $request->input('stripe_secret_key');
 
+
+
+    public function paymentConfigurationCreate(Request $request)
+    {
+        try {
             $bankDetails = [
-                'bank_name' => $request->input('bank_name'), // assuming you have individual inputs for bank_name, account_number, etc.
+                'bank_name' => $request->input('bank_name'),
                 'account_number' => $request->input('account_number'),
                 'branch_name' => $request->input('branch_name'),
                 'country' => $request->input('country')
             ];
-            $paymentConfiguration->bank_details = json_encode($bankDetails);
 
-            $paymentConfiguration->save();
+            PaymentConfiguration::create([
+                'paypal_email' => $request->input('paypal_email'),
+                'stripe_public_key' => $request->input('stripe_public_key'),
+                'stripe_secret_key' => $request->input('stripe_secret_key'),
+                'bank_details' => json_encode($bankDetails),
+            ]);
 
             return response()->json([
-                'success' => true,
-                'message' => 'Payment Configuration Created Successfully!!',
-                'data' => $paymentConfiguration
+                'status' => 'success',
+                'message' => 'Payment Configuration Created Successfully!!'
             ], 201);
         } catch (Exception $exception) {
             return response()->json([
-                'success' => false,
+                'status' => 'failure',
                 'message' => $exception->getMessage()
             ], 500);
         }
     }
 
 
-    public function paymentConfigurationDelete(Request $request){
-        $payment_configuration_id = $request->input('id');
-        $paymentConfiguration = PaymentConfiguration::find($payment_configuration_id);
+    public function paymentConfigurationUpdate(Request $request)
+    {
+        try {
+            $paymentConfiguration = PaymentConfiguration::first();
 
-        if ($paymentConfiguration) {
-            $paymentConfiguration->delete();
-            return response()->json([
-                'success' => 'success',
-                'message' => 'Payment Configuration Deleted Successfully!!'
-            ], 200);
-        }
+            if (!$paymentConfiguration) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Payment Configuration Not Found!!'
+                ], 404);
+            }
 
-        return response()->json([
-            'success' => 'failure',
-            'message' => 'Payment Configuration Not Found!!'
-        ], 404);
-    }
+            // Decode bank_details from request
+            $bankDetails = [
+                'bank_name' => $request->input('bank_details.bank_name'),
+                'account_number' => $request->input('bank_details.account_number'),
+                'branch_name' => $request->input('bank_details.branch_name'),
+                'country' => $request->input('bank_details.country')
+            ];
 
-    public function paymentConfigurationUpdate(Request $request){
-        $payment_configuration_id = $request->input('id');
-        $paymentConfiguration = PaymentConfiguration::find($payment_configuration_id);
-
-        if ($paymentConfiguration) {
+            // Update payment configuration
             $paymentConfiguration->update([
-                'payment_email' => $request->input('payment_email'),
+                'paypal_email' => $request->input('paypal_email'),
                 'stripe_public_key' => $request->input('stripe_public_key'),
                 'stripe_secret_key' => $request->input('stripe_secret_key'),
-                'bank_details' => $request->input('bank_details'),
+                'bank_details' => json_encode($bankDetails),
             ]);
 
             return response()->json([
-                'success' => 'success',
-                'message' => 'Payment Configuration Updated Successfully!!'
+                'status' => 'success',
+                'message' => 'Payment Configuration Updated Successfully!!',
             ], 200);
-        }
 
-        return response()->json([
-            'success' => 'failure',
-            'message' => 'Payment Configuration Not Found!!'
-        ], 404);
-    }
-
-    public function paymentConfigurationIdCheck(Request $request){
-        $payment_configuration_id = $request->input('id');
-        $paymentConfiguration = PaymentConfiguration::find($payment_configuration_id);
-
-        if ($paymentConfiguration) {
+        } catch (Exception $exception) {
             return response()->json([
-                'success' => 'success',
-                'message' => 'Payment Configuration Found'
-            ], 200);
+                'status' => 'failed',
+                'message' => 'Update Failed',
+                'error' => $exception->getMessage()
+            ], 500);
         }
-
-        return response()->json([
-            'success' => 'failure',
-            'message' => 'Payment Configuration Not Found'
-        ], 404);
     }
+
+
+
+
+
+
+
 }

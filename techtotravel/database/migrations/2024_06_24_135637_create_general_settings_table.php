@@ -18,9 +18,12 @@ return new class extends Migration
             $table->string('email', 100);
             $table->string('phone', 100);
             $table->string('address');
-            $table->string('copyright_text', 100);
+            $table->string('copyright_text', 150);
             $table->string('social_icon', 100);
-            $table->string('social_icon_url', 100);
+            $table->string('social_icon_url');
+            $table->string('stunning_place');
+            $table->string('satisfied_customer');
+            $table->string('travel_places');
             $table->string('banner', 100);
             $table->timestamps();
         });
