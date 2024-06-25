@@ -12,11 +12,11 @@ class HomePage extends Model
     protected $table = 'home_page';
 
     protected $fillable = [
-        'type',
+        'user_types',
         'title',
         'subtitle',
         'description',
         'content_data',
-        'order',
+//        'order',
     ];
 }

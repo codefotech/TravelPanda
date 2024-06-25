@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('home_page', function (Blueprint $table) {
             $table->id();
-            $table->string('type', 100);
+            $table->string('user_types', 100);
             $table->string('title', 100);
             $table->string('subtitle', 150);
             $table->string('description');
+            $table->string('image');
             $table->json('content_data');
             $table->string('order');
             $table->timestamps();
