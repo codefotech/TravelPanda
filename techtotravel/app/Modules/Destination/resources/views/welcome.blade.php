@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Dashboard</title>
+        <title>Destination</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -47,13 +47,13 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
-                    Dashboard
+                    Destination
                 </div>
                 <div class="subtitle">
-                    @if (Lang::has('Dashboard::example.welcome'))
-                        {{ trans('Dashboard::example.welcome') }}
+                    @if (Lang::has('Destination::example.welcome'))
+                        {{ trans('Destination::example.welcome') }}
                     @else
-                        Welcome, this is Dashboard module.
+                        Welcome, this is Destination module.
                     @endif
                 </div>
             </div>

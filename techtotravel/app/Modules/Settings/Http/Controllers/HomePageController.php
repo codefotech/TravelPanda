@@ -22,7 +22,7 @@ class HomePageController extends Controller
     public function getHomePage()
     {
         try {
-            $homePage = HomePage::get();
+            $homePage = HomePage::first();
 
             if (!$homePage) {
                 return response()->json([
@@ -59,10 +59,8 @@ class HomePageController extends Controller
         try {
             // Delete old files if new ones are provided
             $this->deleteOldFiles($request);
-
             // Prepare File Names & Paths
             $imgUrl = $this->handleFileUpload('image', $request);
-
             $contentData = [
                 'heroform_desination' => $request->input('heroform_desination'),
                 'heroform_trip_type' => $request->input('heroform_trip_type'),
@@ -83,7 +81,6 @@ class HomePageController extends Controller
                 'trip_activities' => $request->input('trip_activities'),
                 'trip_activities_title' => $request->input('trip_activities_title')
             ];
-
             HomePage::create([
                 'user_types' => $request->input('user_types'),
                 'title' => $request->input('title'),
@@ -91,11 +88,11 @@ class HomePageController extends Controller
                 'description' => $request->input('description'),
                 'image' => $imgUrl,
                 'content_data' => json_encode($contentData),
+                'order' => '0'
             ]);
-
             return response()->json([
                 'status' => 'success',
-                'message' => 'Payment Configuration Created Successfully!!'
+                'message' => 'Home Page Created Successfully!!'
             ], 201);
         } catch (Exception $exception) {
             return response()->json([

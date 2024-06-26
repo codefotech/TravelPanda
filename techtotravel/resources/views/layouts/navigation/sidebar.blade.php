@@ -23,10 +23,10 @@
         </li>
 
         <!-- Settings -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx bx-cog"></i>
-                <div data-i18n="Dashboards">Settings</div>
+                <div data-i18n="Settings">Settings</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
@@ -50,6 +50,22 @@
                     </a>
                 </li>
             </ul>
+        </li>
+
+        <!-- Traveller -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/traveller') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-plane-alt"></i>
+                <div data-i18n="Traveller">Traveller</div>
+            </a>
+        </li>
+
+        <!-- Destination -->
+        <li class="menu-item">
+            <a href="{{ url('/dashboard/destination') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-traffic-cone"></i>
+                <div data-i18n="Traveller">Destination</div>
+            </a>
         </li>
 
         {{--            <!-- Layouts -->--}}

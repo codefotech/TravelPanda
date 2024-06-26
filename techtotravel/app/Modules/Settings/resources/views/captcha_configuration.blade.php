@@ -2,7 +2,7 @@
 
 @section('title', 'Captcha Configuration')
 
-@section('settings_content')
+@section('main_content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="content-header">
             <div class="d-flex position-relative">

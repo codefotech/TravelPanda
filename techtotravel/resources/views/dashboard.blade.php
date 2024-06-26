@@ -11,7 +11,7 @@
     {{-- @else --}}
     <div class="row">
         <div class="col-md-12">
-            @yield('settings_content')
+            @yield('main_content')
         </div>
     </div>
     {{-- @endif --}}

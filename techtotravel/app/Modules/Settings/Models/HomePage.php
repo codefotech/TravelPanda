@@ -16,7 +16,8 @@ class HomePage extends Model
         'title',
         'subtitle',
         'description',
+        'image',
         'content_data',
-//        'order',
+        'order'
     ];
 }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Settings</title>
+        <title>Traveller</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -47,13 +47,13 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
-                    Settings
+                    Traveller
                 </div>
                 <div class="subtitle">
-                    @if (Lang::has('Settings::example.welcome'))
-                        {{ trans('Settings::example.welcome') }}
+                    @if (Lang::has('Traveller::example.welcome'))
+                        {{ trans('Traveller::example.welcome') }}
                     @else
-                        Welcome, this is Settings module.
+                        Welcome, this is Traveller module.
                     @endif
                 </div>
             </div>

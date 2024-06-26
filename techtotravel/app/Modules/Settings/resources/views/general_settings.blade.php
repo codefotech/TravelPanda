@@ -2,7 +2,7 @@
 
 @section('title', 'General Settings')
 
-@section('settings_content')
+@section('main_content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="content-header">
@@ -343,7 +343,7 @@
                                                 <div class="form-group pb-3">
                                                     <label for="" class="control-label">Outdoor Activities</label>
                                                     <div class="">
-                                                        <input type="text" name="outdoor_section_activities"
+                                                        <input type="text" name="outdoor_section_activities" id="outdoor_section_activities"
                                                                class="form-control">
                                                     </div>
                                                 </div>
@@ -690,22 +690,31 @@
         try {
             let formData = new FormData();
             // Append form data with updated values
-            formData.append('email', document.getElementById('email').value);
-            formData.append('phone', document.getElementById('phone').value);
-            formData.append('address', document.getElementById('address').value);
-            formData.append('copyright_text', document.getElementById('copyright_text').value);
-            formData.append('social_icon', document.getElementById('social_icon').value);
-            formData.append('social_icon_url', document.getElementById('social_icon_url').value);
-            formData.append('stunning_place', document.getElementById('stunning_place').value);
-            formData.append('satisfied_customer', document.getElementById('satisfied_customer').value);
-            formData.append('travel_places', document.getElementById('travel_places').value);
+            formData.append('user_types', document.getElementById('user_types').value);
+            formData.append('title', document.getElementById('title').value);
+            formData.append('subtitle', document.getElementById('subtitle').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('heroform_desination', document.getElementById('heroform_desination').value);
+            formData.append('heroform_trip_type', document.getElementById('heroform_trip_type').value);
+            formData.append('heroform_trip_activities', document.getElementById('heroform_trip_activities').value);
+            formData.append('heroform_days', document.getElementById('heroform_days').value);
+            formData.append('heroform_budget', document.getElementById('heroform_budget').value);
+            formData.append('trips_and_tours', document.getElementById('trips_and_tours').value);
+            formData.append('outdoor_section_activities', document.getElementById('outdoor_section_activities').value);
+            formData.append('countries', document.getElementById('countries').value);
+            formData.append('happy_customers', document.getElementById('happy_customers').value);
+            formData.append('trip_section_days', document.getElementById('trip_section_days').value);
+            formData.append('trip_section_people', document.getElementById('trip_section_people').value);
+            formData.append('trip_section_old_price', document.getElementById('trip_section_old_price').value);
+            formData.append('trip_section_new_price', document.getElementById('trip_section_new_price').value);
+            formData.append('trip_section_discount', document.getElementById('trip_section_discount').value);
+            formData.append('place_section_name', document.getElementById('place_section_name').value);
+            formData.append('place_section_activity', document.getElementById('place_section_activity').value);
+            formData.append('trip_activities', document.getElementById('trip_activities').value);
+            formData.append('trip_activities_title', document.getElementById('trip_activities_title').value);
             formData.append('img_path', document.getElementById('logoFilePath').value);
-            formData.append('favicon_path', document.getElementById('faviconFilePath').value);
-            formData.append('banner_path', document.getElementById('bannerFilePath').value);
             // Append files if changed
-            let logoImgUpdate = document.getElementById('logoImgUpdate').files[0];
-            let faviconImgUpdate = document.getElementById('faviconImgUpdate').files[0];
-            let bannerImgUpdate = document.getElementById('bannerImgUpdate').files[0];
+            let logoImgUpdate = document.getElementById('imgImgUpdate').files[0];
 
             if (logoImgUpdate) {
                 formData.append('logo', logoImgUpdate);
