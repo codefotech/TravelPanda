@@ -70,20 +70,24 @@ class GeneralSettingsController extends Controller
             $copyrightText = $request->input('copyright_text', '© Your Company'); // Default value here
 
             // Create General Settings
-            GeneralSettings::create([
+            $generalSettings = GeneralSettings::create([
                 'logo' => $logoUrl,
                 'favicon' => $faviconUrl,
                 'email' => $request->input('email'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
                 'copyright_text' => $copyrightText,
-                'social_icon' => $request->input('social_icon'),
-                'social_icon_url' => $request->input('social_icon_url'),
                 'stunning_place' => $request->input('stunning_place'),
                 'satisfied_customer' => $request->input('satisfied_customer'),
                 'travel_places' => $request->input('travel_places'),
                 'banner' => $bannerUrl
             ]);
+
+            // Save image paths to the database
+            $generalSettings->logo = $logoUrl;
+            $generalSettings->favicon = $faviconUrl;
+            $generalSettings->banner = $bannerUrl;
+            $generalSettings->save();
 
             return response()->json([
                 'status' => 'success',
@@ -93,9 +97,10 @@ class GeneralSettingsController extends Controller
             return response()->json([
                 'status' => 'failure',
                 'message' => $exception->getMessage()
-            ], 404);
+            ], 500);
         }
     }
+
 
     public function generalSettingsUpdate(Request $request)
     {
@@ -122,18 +127,16 @@ class GeneralSettingsController extends Controller
 
             // Update general settings
             $generalSettings->update([
-                'logo' => $logoUrl,
-                'favicon' => $faviconUrl,
+                'logo' => $logoUrl ?: $generalSettings->logo,
+                'favicon' => $faviconUrl ?: $generalSettings->favicon,
                 'email' => $request->input('email'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
                 'copyright_text' => $copyrightText,
-                'social_icon' => $request->input('social_icon'),
-                'social_icon_url' => $request->input('social_icon_url'),
                 'stunning_place' => $request->input('stunning_place'),
                 'satisfied_customer' => $request->input('satisfied_customer'),
                 'travel_places' => $request->input('travel_places'),
-                'banner' => $bannerUrl
+                'banner' => $bannerUrl ?: $generalSettings->banner
             ]);
 
             return response()->json([
@@ -149,6 +152,7 @@ class GeneralSettingsController extends Controller
             ], 500);
         }
     }
+
 
 
     // Helper function to handle file upload

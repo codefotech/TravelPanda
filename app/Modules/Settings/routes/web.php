@@ -3,12 +3,12 @@
 use App\Modules\Dashboard\Http\Controllers\DashboardController;
 use App\Modules\Settings\Http\Controllers\CaptchaConfigurationController;
 use App\Modules\Settings\Http\Controllers\EmailConfigurationController;
-use App\Modules\Settings\Http\Controllers\HomePageController;
+use App\Modules\Settings\Http\Controllers\PagesController;
 use App\Modules\Settings\Http\Controllers\PaymentConfigurationController;
 use App\Modules\Settings\Http\Controllers\GeneralSettingsController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(array('Module'=>'Dashboard, Settings'), function () {
+Route::group(array('Module'=>'Settings'), function () {
     // web routes ---------------------------
     Route::get('/dashboard/settings/generalSettings', [GeneralSettingsController::class, 'generalSettings']);
     Route::get('/dashboard/settings/emailConfiguration', [EmailConfigurationController::class, 'emailConfiguration']);
@@ -36,9 +36,9 @@ Route::group(array('Module'=>'Dashboard, Settings'), function () {
     Route::post('/dashboard/settings/general_settings/create', [GeneralSettingsController::class, 'generalSettingsCreate']);
     Route::post('/dashboard/settings/general_settings/update', [GeneralSettingsController::class, 'generalSettingsUpdate']);
 
-    Route::get('/dashboard/settings/home_page', [HomePageController::class, 'getHomePage']);
-    Route::post('/dashboard/settings/home_page/create', [HomePageController::class, 'homePageCreate']);
-    Route::post('/dashboard/settings/home_page/update', [HomePageController::class, 'homePageUpdate']);
+    Route::get('/dashboard/settings/pages', [PagesController::class, 'getPages']);
+    Route::post('/dashboard/settings/pages/create', [PagesController::class, 'pagesCreate']);
+    Route::post('/dashboard/settings/pages/update', [PagesController::class, 'pagesUpdate']);
 
 });
 

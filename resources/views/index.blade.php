@@ -21,9 +21,10 @@
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 
-    {{--    <script src="{{ asset('assets-1/css/others/jquery.dataTables.min.css') }}"></script>--}}
-    {{--    <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>--}}
-    {{--    <script src="{{ asset('assets-1/js/others/jquery.sticky.js') }}"></script>--}}
+{{--        <script src="{{ asset('assets-1/css/others/jquery.dataTables.min.css') }}"></script>--}}
+{{--        <script src="{{ asset('assets-1/css/others/jquery-3.7.0.min.js') }}"></script>--}}
+{{--        <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>--}}
+{{--        <script src="{{ asset('assets-1/js/others/jquery.sticky.js') }}"></script>--}}
 
     <script src="{{ asset('assets-1/js/others/axios.min.js') }}"></script>
     <script src="{{ asset('assets-1/js/others/config.js') }}"></script>

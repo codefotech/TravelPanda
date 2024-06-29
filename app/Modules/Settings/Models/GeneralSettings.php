@@ -18,8 +18,6 @@ class GeneralSettings extends Model
         'phone',
         'address',
         'copyright_text',
-        'social_icon',
-        'social_icon_url',
         'stunning_place',
         'satisfied_customer',
         'travel_places',

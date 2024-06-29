@@ -1,13 +1,13 @@
 web.php
 ----------
-    Route::get('/dashboard/settings/home_page', [HomePageController::class, 'getHomePage']);
-    Route::post('/dashboard/settings/home_page/create', [HomePageController::class, 'homePageCreate']);
-    Route::post('/dashboard/settings/home_page/update', [HomePageController::class, 'homePageUpdate']);
+    Route::get('/dashboard/settings/home_page', [PagesController::class, 'getPages']);
+    Route::post('/dashboard/settings/home_page/create', [PagesController::class, 'pagesCreate']);
+    Route::post('/dashboard/settings/home_page/update', [PagesController::class, 'pagesUpdate']);
 
 
 general_settings.blade.php
 ------------------------------
-   <!-- Home Page Form Start -->
+   <!-- Pages Form Start -->
                             <div class="tab-pane fade" id="tab_4" role="tabpanel">
                                 <form class="form-horizontal" enctype="multipart/form-data" method="post">
                                     @csrf
@@ -56,7 +56,7 @@ general_settings.blade.php
                                                 <div class="form-group pb-3">
                                                     <label for="" class=control-label">Existing Photo</label>
                                                     <div class="" style="padding-top:6px;">
-                                                        <img src="{{ asset($homePageData['image'] ?? 'assets-1/img/default-img.jpg') }}" class="existing-photo" id="old_image" style="height:80px;">
+                                                        <img src="{{ asset($pagesData['image'] ?? 'assets-1/img/default-img.jpg') }}" class="existing-photo" id="old_image" style="height:80px;">
                                                         <br><br>
                                                         <input oninput="old_image.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="imgUpdate">
                                                         <br>
@@ -70,70 +70,70 @@ general_settings.blade.php
                                                 <div class="form-group pb-3" style="padding-top:7px;">
                                                     <label for="" class="control-label">Destination </label>
                                                     <select name="heroform_desination" id="heroform_desination" class="form-control">
-                                                        <option value="Dhaka" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
-                                                        <option value="Chattogram" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Chattogram' ? 'selected' : '' }}>Chattogram</option>
-                                                        <option value="Barishal" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Barishal' ? 'selected' : '' }}>Barishal</option>
-                                                        <option value="Dhaka" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
-                                                        <option value="Khulna" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Khulna' ? 'selected' : '' }}>Khulna</option>
-                                                        <option value="Rajshahi" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Rajshahi' ? 'selected' : '' }}>Rajshahi</option>
-                                                        <option value="Rangpur" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Rangpur' ? 'selected' : '' }}>Rangpur</option>
-                                                        <option value="Mymensingh" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Mymensingh' ? 'selected' : '' }}>Mymensingh</option>
-                                                        <option value="Sylhet" {{ isset($homePageData['heroform_desination']) && $homePageData['heroform_desination'] == 'Sylhet' ? 'selected' : '' }}>Sylhet</option>
+                                                        <option value="Dhaka" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
+                                                        <option value="Chattogram" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Chattogram' ? 'selected' : '' }}>Chattogram</option>
+                                                        <option value="Barishal" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Barishal' ? 'selected' : '' }}>Barishal</option>
+                                                        <option value="Dhaka" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
+                                                        <option value="Khulna" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Khulna' ? 'selected' : '' }}>Khulna</option>
+                                                        <option value="Rajshahi" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Rajshahi' ? 'selected' : '' }}>Rajshahi</option>
+                                                        <option value="Rangpur" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Rangpur' ? 'selected' : '' }}>Rangpur</option>
+                                                        <option value="Mymensingh" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Mymensingh' ? 'selected' : '' }}>Mymensingh</option>
+                                                        <option value="Sylhet" {{ isset($pagesData['heroform_desination']) && $pagesData['heroform_desination'] == 'Sylhet' ? 'selected' : '' }}>Sylhet</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group pb-3" style="padding-top:7px;">
                                                     <label for="" class="control-label">Trip Types </label>
                                                     <select name="heroform_trip_type" id="heroform_trip_type" class="form-control">
-                                                        <option value="Holiday Package" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Holiday Package' ? 'selected' : '' }}>Holiday Package</option>
-                                                        <option value="Full Of FamJam" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Full Of FamJam' ? 'selected' : '' }}>Full Of FamJam</option>
-                                                        <option value="Friends-Only Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Friends-Only Trip' ? 'selected' : '' }}>Friends-Only Trip</option>
-                                                        <option value="Siblings-Only Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Siblings-Only Trip' ? 'selected' : '' }}>Siblings-Only Trip</option>
-                                                        <option value="All-Girls Or An All-Boys Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'All-Girls Or An All-Boys Trip' ? 'selected' : '' }}>All-Girls Or An All-Boys Trip</option>
-                                                        <option value="Volunteer Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Volunteer Trip' ? 'selected' : '' }}>Volunteer Trip</option>
-                                                        <option value="Impromptu Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Impromptu Trip' ? 'selected' : '' }}>Impromptu Trip</option>
-                                                        <option value="Solo Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Solo Trip' ? 'selected' : '' }}>Solo Trip</option>
-                                                        <option value="Adventure Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Adventure Trip' ? 'selected' : '' }}>Adventure Trip</option>
-                                                        <option value="Luxury Trip" {{ isset($homePageData['heroform_trip_type']) && $homePageData['heroform_trip_type'] == 'Luxury Trip' ? 'selected' : '' }}>Luxury Trip</option>
+                                                        <option value="Holiday Package" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Holiday Package' ? 'selected' : '' }}>Holiday Package</option>
+                                                        <option value="Full Of FamJam" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Full Of FamJam' ? 'selected' : '' }}>Full Of FamJam</option>
+                                                        <option value="Friends-Only Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Friends-Only Trip' ? 'selected' : '' }}>Friends-Only Trip</option>
+                                                        <option value="Siblings-Only Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Siblings-Only Trip' ? 'selected' : '' }}>Siblings-Only Trip</option>
+                                                        <option value="All-Girls Or An All-Boys Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'All-Girls Or An All-Boys Trip' ? 'selected' : '' }}>All-Girls Or An All-Boys Trip</option>
+                                                        <option value="Volunteer Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Volunteer Trip' ? 'selected' : '' }}>Volunteer Trip</option>
+                                                        <option value="Impromptu Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Impromptu Trip' ? 'selected' : '' }}>Impromptu Trip</option>
+                                                        <option value="Solo Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Solo Trip' ? 'selected' : '' }}>Solo Trip</option>
+                                                        <option value="Adventure Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Adventure Trip' ? 'selected' : '' }}>Adventure Trip</option>
+                                                        <option value="Luxury Trip" {{ isset($pagesData['heroform_trip_type']) && $pagesData['heroform_trip_type'] == 'Luxury Trip' ? 'selected' : '' }}>Luxury Trip</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group pb-3" style="padding-top:7px;">
                                                     <label for="" class="control-label">Activity </label>
                                                     <select name="heroform_trip_activities" id="heroform_trip_activities" class="form-control">
-                                                        <option value="Star Line" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Star Line' ? 'selected' : '' }}>Star Line</option>
-                                                        <option value="Green Line" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Green Line' ? 'selected' : '' }}>Green Line</option>
-                                                        <option value="Hanif Enterprise" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Hanif Enterprise' ? 'selected' : '' }}>Hanif Enterprise</option>
-                                                        <option value="Shyamoli Paribahan" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Shyamoli Paribahan' ? 'selected' : '' }}>Shyamoli Paribahan</option>
-                                                        <option value="Shohag Paribahan" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Shohag Paribahan' ? 'selected' : '' }}>Shohag Paribahan</option>
-                                                        <option value="Ena Transport" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Ena Transport' ? 'selected' : '' }}>Ena Transport</option>
-                                                        <option value="London Express" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'London Express' ? 'selected' : '' }}>London Express</option>
-                                                        <option value="Saint Martin Paribahan" {{ isset($homePageData['heroform_trip_activities']) && $homePageData['heroform_trip_activities'] == 'Saint Martin Paribahan' ? 'selected' : '' }}>Saint Martin Paribahan</option>
+                                                        <option value="Star Line" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Star Line' ? 'selected' : '' }}>Star Line</option>
+                                                        <option value="Green Line" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Green Line' ? 'selected' : '' }}>Green Line</option>
+                                                        <option value="Hanif Enterprise" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Hanif Enterprise' ? 'selected' : '' }}>Hanif Enterprise</option>
+                                                        <option value="Shyamoli Paribahan" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Shyamoli Paribahan' ? 'selected' : '' }}>Shyamoli Paribahan</option>
+                                                        <option value="Shohag Paribahan" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Shohag Paribahan' ? 'selected' : '' }}>Shohag Paribahan</option>
+                                                        <option value="Ena Transport" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Ena Transport' ? 'selected' : '' }}>Ena Transport</option>
+                                                        <option value="London Express" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'London Express' ? 'selected' : '' }}>London Express</option>
+                                                        <option value="Saint Martin Paribahan" {{ isset($pagesData['heroform_trip_activities']) && $pagesData['heroform_trip_activities'] == 'Saint Martin Paribahan' ? 'selected' : '' }}>Saint Martin Paribahan</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group pb-3" style="padding-top:7px;">
                                                     <label for="" class="control-label">Days </label>
                                                     <select name="heroform_days" id="heroform_days" class="form-control">
-                                                        <option value="0 Days - 1 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 1 Days' ? 'selected' : '' }}>0 Days - 1 Days</option>
-                                                        <option value="0 Days - 3 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 3 Days' ? 'selected' : '' }}>0 Days - 3 Days</option>
-                                                        <option value="0 Days - 5 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 5 Days' ? 'selected' : '' }}>0 Days - 5 Days</option>
-                                                        <option value="0 Days - 7 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 7 Days' ? 'selected' : '' }}>0 Days - 7 Days</option>
-                                                        <option value="0 Days - 10 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 10 Days' ? 'selected' : '' }}>0 Days - 10 Days</option>
-                                                        <option value="0 Days - 14 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 14 Days' ? 'selected' : '' }}>0 Days - 14 Days</option>
-                                                        <option value="0 Days - 30 Days" {{ isset($homePageData['heroform_days']) && $homePageData['heroform_days'] == '0 Days - 30 Days' ? 'selected' : '' }}>0 Days - 30 Days</option>
+                                                        <option value="0 Days - 1 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 1 Days' ? 'selected' : '' }}>0 Days - 1 Days</option>
+                                                        <option value="0 Days - 3 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 3 Days' ? 'selected' : '' }}>0 Days - 3 Days</option>
+                                                        <option value="0 Days - 5 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 5 Days' ? 'selected' : '' }}>0 Days - 5 Days</option>
+                                                        <option value="0 Days - 7 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 7 Days' ? 'selected' : '' }}>0 Days - 7 Days</option>
+                                                        <option value="0 Days - 10 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 10 Days' ? 'selected' : '' }}>0 Days - 10 Days</option>
+                                                        <option value="0 Days - 14 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 14 Days' ? 'selected' : '' }}>0 Days - 14 Days</option>
+                                                        <option value="0 Days - 30 Days" {{ isset($pagesData['heroform_days']) && $pagesData['heroform_days'] == '0 Days - 30 Days' ? 'selected' : '' }}>0 Days - 30 Days</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group pb-3" style="padding-top:7px;">
                                                     <label for="" class="control-label">Package </label>
                                                     <select name="heroform_budget" id="heroform_budget" class="form-control">
-                                                        <option value="$100 - $150" {{ isset($homePageData['heroform_budget']) && $homePageData['heroform_budget'] == '$100 - $150' ? 'selected' : '' }}>$100 - $150</option>
-                                                        <option value="$150 - $200" {{ isset($homePageData['heroform_budget']) && $homePageData['heroform_budget'] == '$150 - $200' ? 'selected' : '' }}>$150 - $200</option>
-                                                        <option value="$200 - $250" {{ isset($homePageData['heroform_budget']) && $homePageData['heroform_budget'] == '$200 - $250' ? 'selected' : '' }}>$200 - $250</option>
-                                                        <option value="$250 - $350" {{ isset($homePageData['heroform_budget']) && $homePageData['heroform_budget'] == '$250 - $350' ? 'selected' : '' }}>$250 - $350</option>
-                                                        <option value="$250 - $500" {{ isset($homePageData['heroform_budget']) && $homePageData['heroform_budget'] == '$250 - $500' ? 'selected' : '' }}>$250 - $500</option>
-                                                        <option value="$500 - $1000" {{ isset($homePageData['heroform_budget']) && $homePageData['heroform_budget'] == '$500 - $1000' ? 'selected' : '' }}>$500 - $1000</option>
+                                                        <option value="$100 - $150" {{ isset($pagesData['heroform_budget']) && $pagesData['heroform_budget'] == '$100 - $150' ? 'selected' : '' }}>$100 - $150</option>
+                                                        <option value="$150 - $200" {{ isset($pagesData['heroform_budget']) && $pagesData['heroform_budget'] == '$150 - $200' ? 'selected' : '' }}>$150 - $200</option>
+                                                        <option value="$200 - $250" {{ isset($pagesData['heroform_budget']) && $pagesData['heroform_budget'] == '$200 - $250' ? 'selected' : '' }}>$200 - $250</option>
+                                                        <option value="$250 - $350" {{ isset($pagesData['heroform_budget']) && $pagesData['heroform_budget'] == '$250 - $350' ? 'selected' : '' }}>$250 - $350</option>
+                                                        <option value="$250 - $500" {{ isset($pagesData['heroform_budget']) && $pagesData['heroform_budget'] == '$250 - $500' ? 'selected' : '' }}>$250 - $500</option>
+                                                        <option value="$500 - $1000" {{ isset($pagesData['heroform_budget']) && $pagesData['heroform_budget'] == '$500 - $1000' ? 'selected' : '' }}>$500 - $1000</option>
                                                     </select>
                                                 </div>
 
@@ -279,7 +279,7 @@ general_settings.blade.php
                                     </div>
                                 </form>
                             </div>
-                            <!-- Home Page Form End -->
+                            <!-- Pages Form End -->
 
 
 <script>
@@ -366,7 +366,7 @@ general_settings.blade.php
         }
     }
 
-    async function getHomePage() {
+    async function getPages() {
         try {
             let res = await axios.get('/dashboard/settings/home_page');
             if (res.status === 200 && res.data.status === 'success') {
@@ -407,7 +407,7 @@ general_settings.blade.php
         }
     }
 
-    async function updateHomePage() {
+    async function updatePages() {
         try {
             let formData = new FormData();
             // Append form data with updated values
@@ -460,49 +460,49 @@ general_settings.blade.php
 
     document.addEventListener('DOMContentLoaded', async () => {
         await getGeneralSettings();
-        await getHomePage();
+        await getPages();
     });
 </script>
 
 
-HomePageController.php
+PagesController.php
 -----------------------------
-    public function getHomePage()
+    public function getPages()
     {
         try {
-            $homePage = HomePage::get();
+            $pages = Pages::get();
 
-            if (!$homePage) {
+            if (!$pages) {
                 return response()->json([
                     'status' => 'failure',
-                    'message' => 'Home Page Not Found!!'
+                    'message' => 'Pages Not Found!!'
                 ], 404);
             }
 
-            $homePageData = $homePage->toArray();
+            $pagesData = $pages->toArray();
 
             // Decode content_data JSON field
-            $contentData = json_decode($homePage->content_data, true);
-            $homePageData['content_data'] = $contentData;
+            $contentData = json_decode($pages->content_data, true);
+            $pagesData['content_data'] = $contentData;
 
             // Return data in JSON format
             return response()->json([
                 'status' => 'success',
-                'message' => 'Home Page Retrieved Successfully',
-                'data' => $homePageData
+                'message' => 'pages Retrieved Successfully',
+                'data' => $pagesData
             ], 200);
 
         } catch (Exception $exception) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Failed to fetch home page',
+                'message' => 'Failed to fetch pages',
                 'error' => $exception->getMessage()
             ], 500);
         }
     }
 
 
-    public function homePageCreate(Request $request)
+    public function pagesCreate(Request $request)
     {
         try {
             // Delete old files if new ones are provided
@@ -532,7 +532,7 @@ HomePageController.php
                 'trip_activities_title' => $request->input('trip_activities_title')
             ];
 
-            HomePage::create([
+            Pages::create([
                 'user_types' => $request->input('user_types'),
                 'title' => $request->input('title'),
                 'subtitle' => $request->input('subtitle'),
@@ -554,15 +554,15 @@ HomePageController.php
     }
 
 
-    public function homePageUpdate(Request $request)
+    public function pagesUpdate(Request $request)
     {
         try {
-            $homePage = HomePage::get();
+            $pages = Pages::get();
 
-            if (!$homePage) {
+            if (!$pages) {
                 return response()->json([
                     'status' => 'failure',
-                    'message' => 'Home Page Not Found!!'
+                    'message' => 'Pages Not Found!!'
                 ], 404);
             }
 
@@ -593,8 +593,8 @@ HomePageController.php
                 'trip_activities_title' => $request->input('content_data.trip_activities_title')
             ];
 
-            // Update home page
-            $homePage->update([
+            // Update Pages
+            $pages->update([
                 'user_types' => $request->input('user_types'),
                 'title' => $request->input('title'),
                 'subtitle' => $request->input('subtitle'),
@@ -605,7 +605,7 @@ HomePageController.php
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Home Page Updated Successfully!!',
+                'message' => 'Pages Updated Successfully!!',
             ], 200);
 
         } catch (Exception $exception) {

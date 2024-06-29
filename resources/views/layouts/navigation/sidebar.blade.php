@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link" style="font-size: 25px;">
+        <a href="{{ url('/') }}" class="app-brand-link" style="font-size: 25px;">
             <span class="text-dark fw-bold">TechToTravel &nbsp;</span>
             <i class="fas fa-plane codefotech_text_color"></i>
 {{--            <img src="{{ asset('assets-2/img/icons/logo.png') }}" alt="" width="100%">--}}
@@ -54,7 +54,7 @@
 
         <!-- Traveller -->
         <li class="menu-item active">
-            <a href="{{ url('/dashboard/traveller') }}" class="menu-link">
+            <a href="{{ url('/dashboard/travellerList') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-plane-alt"></i>
                 <div data-i18n="Traveller">Traveller</div>
             </a>
