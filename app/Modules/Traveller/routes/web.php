@@ -10,11 +10,10 @@ Route::group(array('Module'=>'Traveller'), function () {
     Route::get('/dashboard/travellerUpdate/{id}', [TravellerController::class, 'travellerUpdate']);
 
 // API routes
-    Route::get('/dashboard/traveller/get', [TravellerController::class, 'get_travellers']);
+
+    Route::get('/dashboard/allTraveller', [TravellerController::class, 'allTraveller']);
     Route::get('/dashboard/traveller/get/{id}', [TravellerController::class, 'get_traveller']);
-    Route::post('/dashboard/traveller/create', [TravellerController::class, 'create']);
-    Route::post('/dashboard/traveller/update/{id}', [TravellerController::class, 'update']);
-    Route::post('/dashboard/traveller/delete/{id}', [TravellerController::class, 'delete']);
-
-
+    Route::post('/dashboard/traveller/create', [TravellerController::class, 'createTraveller']);
+    Route::post('/dashboard/traveller/update/{id}', [TravellerController::class, 'updateTraveller']);
+    Route::post('/dashboard/traveller/delete/{id}', [TravellerController::class, 'deleteTraveller']);
 });

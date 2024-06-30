@@ -19,8 +19,8 @@
 
         <div class="row py-4 align-items-center justify-content-center">
             <div class="col-md-12 col-sm-12 col-lg-12">
-                <div class="card">
-                    <table class="table bg-light" id="tableData">
+                <div class="card overflow-auto">
+                    <table id="tableData" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>SL</th>
@@ -36,6 +36,7 @@
                         </tr>
                         </thead>
                         <tbody id="tableList">
+
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +51,9 @@
 
         async function getList() {
             try {
-                let res = await axios.get('/dashboard/traveller/get');
+                // let res = await axios.get('/dashboard/traveller/get');
+                let res = await axios.get('/dashboard/allTraveller');
+
                 console.log(res);
 
                 if (res.status === 200 && res.data.status === 'success') {
@@ -58,8 +61,8 @@
                     tableList.empty();
 
                     res.data.data.forEach(function (item, index) {
-                        let statusText = item.status ? 'Active' : 'Inactive';
-                        let badgeClass = item.status ? 'text-success' : 'text-dan';
+                        let statusText = item.status === 'Active' ? 'Active' : 'Inactive';
+                        let badgeClass = item.status === 'Active' ? 'text-white bg-success px-2 py-1 small rounded' : 'text-white bg-danger px-2 py-1 small rounded';
 
                         let row = `<tr>
                                     <td>${index + 1}</td>
@@ -72,8 +75,8 @@
                                     <td>${item.address}</td>
                                     <td><span class="${badgeClass}">${statusText}</span></td>
                                     <td>
-                                        <a href="/dashboard/travellerUpdate/${item.id}" class="btn btn-sm text-white mx-2 my-auto editBtn" style="background-image: linear-gradient(to top, rgb(0, 34, 141), rgb(37, 93, 157))">Edit</a>
-                                        <button data-id="${item.id}" class="btn btn-sm text-white my-auto deleteBtn" style="background-image: linear-gradient(to top, rgb(141, 0, 0), rgb(157, 37, 37))">Delete</button>
+                                        <a href="/dashboard/travellerUpdate/${item.id}" class="btn btn-sm text-white codefotech_color mx-2 my-auto editBtn">Edit</a>
+                                        <button data-id="${item.id}" class="btn btn-sm text-white btn-danger my-auto deleteBtn">Delete</button>
                                     </td>
                                 </tr>`;
                         tableList.append(row);
@@ -113,4 +116,5 @@
             }
         });
     </script>
+
 @endsection

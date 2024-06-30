@@ -76,7 +76,7 @@
                                     <div class="form-group pb-3">
                                         <label for="" class="control-label">Status</label>
                                         <div class="">
-                                            <select id="status" name="recaptcha_status" class="form-control">
+                                            <select id="status" name="status" class="form-control">
                                                 <option value="Active" {{ isset($travellerData['status']) && $travellerData['status'] == 'Active' ? 'selected' : '' }}>Active</option>
                                                 <option value="InActive" {{ isset($travellerData['status']) && $travellerData['status'] == 'InActive' ? 'selected' : '' }}>InActive</option>
                                             </select>
@@ -85,9 +85,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <button class="btn btn-primary codefotech_color pull-left"
-                                                    onclick="updateTraveller()">Update
-                                            </button>
+                                            <button class="btn btn-primary codefotech_color pull-left" onclick="updateTraveller(event)">Update</button>
                                         </div>
                                     </div>
                                 </div>

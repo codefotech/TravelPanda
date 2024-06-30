@@ -25,11 +25,11 @@ class TravellerController extends Controller
         return view("Traveller::update", ['id' => $id]);
     }
 
-    public function get_travellers()
+    public function allTraveller()
     {
         try {
-            $travellers = Traveller::all();
-            if ($travellers->isEmpty()) {
+            $travellers = Traveller::get();
+            if (!$travellers) {
                 return response()->json([
                     'status' => 'failure',
                     'message' => 'No Travellers Found!!'
@@ -68,10 +68,19 @@ class TravellerController extends Controller
     }
 
 
-    public function create(Request $request)
+    public function createTraveller(Request $request)
     {
         try {
-            Traveller::create($request->all());
+            Traveller::create([
+                'traveller_name' => $request->input('traveller_name'),
+                'traveller_email' => $request->input('traveller_email'),
+                'traveller_phone' => $request->input('traveller_phone'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'country' => $request->input('country'),
+                'address' => $request->input('address'),
+                'status' => $request->input('status')
+            ]);
             return response()->json([
                 'status' => 'success',
                 'message' => 'Traveller Created Successfully!!'
@@ -84,11 +93,21 @@ class TravellerController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function updateTraveller(Request $request, $id)
     {
         try {
             $traveller = Traveller::findOrFail($id);
-            $traveller->update($request->all());
+
+            $traveller->update([
+                'traveller_name' => $request->input('traveller_name'),
+                'traveller_email' => $request->input('traveller_email'),
+                'traveller_phone' => $request->input('traveller_phone'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'country' => $request->input('country'),
+                'address' => $request->input('address'),
+                'status' => $request->input('status')
+            ]);
             return response()->json([
                 'status' => 'success',
                 'message' => 'Traveller Updated Successfully!!',
@@ -103,7 +122,7 @@ class TravellerController extends Controller
     }
 
 
-    public function delete($id)
+    public function deleteTraveller($id)
     {
         try {
             $traveller = Traveller::findOrFail($id);

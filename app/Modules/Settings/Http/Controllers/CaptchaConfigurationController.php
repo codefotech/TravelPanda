@@ -55,8 +55,14 @@ class CaptchaConfigurationController extends Controller
     {
         try {
             CaptchaConfiguration::create([
-                'recaptcha_site_key' => $request->input('recaptcha_site_key'),
-                'recaptcha_status' => $request->input('recaptcha_status')
+                'traveller_name' => $request->input('traveller_name'),
+                'traveller_email' => $request->input('traveller_email'),
+                'traveller_phone' => $request->input('traveller_phone'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'country' => $request->input('country'),
+                'address' => $request->input('address'),
+                'status' => $request->input('status')
             ]);
 
             return response()->json([
@@ -85,8 +91,14 @@ class CaptchaConfigurationController extends Controller
             }
 
             $captchaConfiguration->update([
-                'recaptcha_site_key' => $request->input('recaptcha_site_key'),
-                'recaptcha_status' => $request->input('recaptcha_status')
+                'traveller_name' => $request->input('traveller_name'),
+                'traveller_email' => $request->input('traveller_email'),
+                'traveller_phone' => $request->input('traveller_phone'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'country' => $request->input('country'),
+                'address' => $request->input('address'),
+                'status' => $request->input('status')
             ]);
 
             return response()->json([
