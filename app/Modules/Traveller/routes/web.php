@@ -4,14 +4,17 @@ use App\Modules\Traveller\Http\Controllers\TravellerController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(array('Module'=>'Traveller'), function () {
-    // web route --
+// Web routes
     Route::get('/dashboard/travellerList', [TravellerController::class, 'index']);
     Route::get('/dashboard/travellerCreate', [TravellerController::class, 'travellerCreate']);
-    Route::get('/dashboard/travellerUpdate', [TravellerController::class, 'travellerUpdate']);
+    Route::get('/dashboard/travellerUpdate/{id}', [TravellerController::class, 'travellerUpdate']);
 
-    // api route --
-    Route::get('/dashboard/traveller/get', [TravellerController::class, 'get_traveller']);
+// API routes
+    Route::get('/dashboard/traveller/get', [TravellerController::class, 'get_travellers']);
+    Route::get('/dashboard/traveller/get/{id}', [TravellerController::class, 'get_traveller']);
     Route::post('/dashboard/traveller/create', [TravellerController::class, 'create']);
-    Route::post('/dashboard/traveller/update', [TravellerController::class, 'update']);
-    Route::post('/dashboard/traveller/delete', [TravellerController::class, 'delete']);
+    Route::post('/dashboard/traveller/update/{id}', [TravellerController::class, 'update']);
+    Route::post('/dashboard/traveller/delete/{id}', [TravellerController::class, 'delete']);
+
+
 });

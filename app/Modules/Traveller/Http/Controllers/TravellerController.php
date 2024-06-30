@@ -10,37 +10,36 @@ use Mockery\Exception;
 
 class TravellerController extends Controller
 {
-    public function index():View {
+    public function index(): View
+    {
         return view("Traveller::index");
     }
-    public function travellerCreate():View{
+
+    public function travellerCreate(): View
+    {
         return view("Traveller::create");
     }
-    public function travellerUpdate():View{
-        return view("Traveller::update");
+
+    public function travellerUpdate($id): View
+    {
+        return view("Traveller::update", ['id' => $id]);
     }
 
-
-
-
-
-    public function get_traveller() {
+    public function get_travellers()
+    {
         try {
             $travellers = Traveller::all();
-
             if ($travellers->isEmpty()) {
                 return response()->json([
                     'status' => 'failure',
                     'message' => 'No Travellers Found!!'
                 ], 404);
             }
-
             return response()->json([
                 'status' => 'success',
                 'message' => 'Travellers Retrieved Successfully',
                 'data' => $travellers
             ], 200);
-
         } catch (Exception $exception) {
             return response()->json([
                 'status' => 'error',
@@ -50,67 +49,76 @@ class TravellerController extends Controller
         }
     }
 
-
-    public function create(Request $request){
+    public function get_traveller($id)
+    {
         try {
-            Traveller::create([
-                'traveller_name' => $request->input('traveller_name'),
-                'traveller_email' => $request->input('traveller_email'),
-                'traveller_phone' => $request->input('traveller_phone'),
-                'city' => $request->input('city'),
-                'state' => $request->input('state'),
-                'country' => $request->input('country'),
-                'address' => $request->input('address'),
-                'status' => $request->input('status')
-            ]);
-
+            $traveller = Traveller::findOrFail($id);
             return response()->json([
-                'success' => 'success',
+                'status' => 'success',
+                'message' => 'Traveller Retrieved Successfully',
+                'data' => $traveller
+            ], 200);
+        } catch (Exception $exception) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to fetch traveller',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
+    }
+
+
+    public function create(Request $request)
+    {
+        try {
+            Traveller::create($request->all());
+            return response()->json([
+                'status' => 'success',
                 'message' => 'Traveller Created Successfully!!'
             ], 201);
         } catch (Exception $exception) {
             return response()->json([
-                'success' => 'failure',
+                'status' => 'failure',
                 'message' => $exception->getMessage()
-            ], 404);
+            ], 500);
         }
     }
-    public function update(Request $request){
+
+    public function update(Request $request, $id)
+    {
         try {
-            $traveller = Traveller::first();
-
-            if (!$traveller) {
-                return response()->json([
-                    'status' => 'failure',
-                    'message' => 'Traveller Not Found!!'
-                ], 404);
-            }
-
-            $traveller->update([
-                'traveller_name' => $request->input('traveller_name'),
-                'traveller_email' => $request->input('traveller_email'),
-                'traveller_phone' => $request->input('traveller_phone'),
-                'city' => $request->input('city'),
-                'state' => $request->input('state'),
-                'country' => $request->input('country'),
-                'address' => $request->input('address'),
-                'status' => $request->input('status')
-            ]);
-
+            $traveller = Traveller::findOrFail($id);
+            $traveller->update($request->all());
             return response()->json([
                 'status' => 'success',
                 'message' => 'Traveller Updated Successfully!!',
             ], 200);
-
         } catch (Exception $exception) {
             return response()->json([
-                'status' => 'failed',
+                'status' => 'failure',
                 'message' => 'Update Failed',
                 'error' => $exception->getMessage()
             ], 500);
         }
     }
-    public function delete(Request $request){
 
+
+    public function delete($id)
+    {
+        try {
+            $traveller = Traveller::findOrFail($id);
+            $traveller->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Traveller Deleted Successfully!!',
+            ], 200);
+        } catch (Exception $exception) {
+            return response()->json([
+                'status' => 'failure',
+                'message' => 'Delete Failed',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
     }
 }
+

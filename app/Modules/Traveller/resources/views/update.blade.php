@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('title', 'Traveller')
+@section('title', 'Update Traveller')
 
 @section('main_content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -24,6 +24,8 @@
                             <form class="form-horizontal" enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="card shadow-sm p-3">
+                                    <input type="hidden" id="traveller_id" value="{{ $id }}">
+
                                     <div class="form-group pb-3">
                                         <label for="traveller_name" class="control-label">Traveller Name
                                             <span>*</span></label>
@@ -97,11 +99,22 @@
         </div>
     </div>
 
+
+
+
+
+
+
     <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await getTraveller();
+        });
+
 
         async function getTraveller() {
+            let id = document.getElementById('traveller_id').value;
             try {
-                let res = await axios.get('/dashboard/traveller/get');
+                let res = await axios.get(`/dashboard/traveller/get/${id}`);
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
                     document.getElementById('traveller_name').value = data.traveller_name;
@@ -113,17 +126,17 @@
                     document.getElementById('address').value = data.address;
                     document.getElementById('status').value = data.status;
                 } else {
-                    errorToast('Failed to fetch travelller');
+                    errorToast('Failed to fetch traveller');
                 }
             } catch (error) {
-                console.error('Error fetching email configuration:', error);
-                errorToast('An error occurred while fetching travelller');
+                console.error('Error fetching traveller:', error);
+                alert('An error occurred while fetching traveller');
             }
         }
 
-
-        async function updateTraveller() {
+        async function updateTraveller(event) {
             event.preventDefault();
+            let id = document.getElementById('traveller_id').value;
             try {
                 let updateTravellerName = document.getElementById('traveller_name').value;
                 let updateTravellerEmail = document.getElementById('traveller_email').value;
@@ -134,52 +147,53 @@
                 let updateAddress = document.getElementById('address').value;
                 let updateStatus = document.getElementById('status').value;
 
-                if (!updateTravellerName) {
-                    return errorToast("Traveller Name Required!");
-                } else if (!updateTravellerEmail) {
-                    return errorToast("Traveller Email Required!");
-                } else if (!updateTravellerPhone) {
-                    return errorToast("Traveller Phone Required!");
-                } else if (!updateCity) {
-                    return errorToast("City Required!");
-                } else if (!updateState) {
-                    return errorToast("State Required!");
-                } else if (!updateCountry) {
-                    return errorToast("Country Required!");
-                } else if (!updateAddress) {
-                    return errorToast("Address Required!");
-                } else if (!updateStatus) {
-                    return errorToast("Status Required!");
+                let res = await axios.post(`/dashboard/traveller/update/${id}`, {
+                    traveller_name: updateTravellerName,
+                    traveller_email: updateTravellerEmail,
+                    traveller_phone: updateTravellerPhone,
+                    city: updateCity,
+                    state: updateState,
+                    country: updateCountry,
+                    address: updateAddress,
+                    status: updateStatus,
+                });
+
+                if (res.status === 200 && res.data['status'] === 'success') {
+                    successToast(res.data['message']);
                 } else {
-                    let res = await axios.post('/dashboard/traveller/update', {
-                        traveller_name: updateTravellerName,
-                        traveller_email: updateTravellerEmail,
-                        traveller_phone: updateTravellerPhone,
-                        city: updateCity,
-                        state: updateState,
-                        country: updateCountry,
-                        address: updateAddress,
-                        status: updateStatus,
-                    });
-
-                    if (res.status === 200 && res.data['status'] === 'success') {
-                        successToast(res.data['message']);
-                        await getTraveller();
-                    } else {
-                        errorToast(res.data['message']);
-                    }
+                    errorToast(res.data['message']);
                 }
-
             } catch (error) {
                 console.error('Error updating traveller:', error);
                 errorToast('An error occurred while updating traveller');
             }
         }
 
-        // Initial fetch of traveller data when page loads
-        document.addEventListener('DOMContentLoaded', async () => {
-            await getTraveller();
+
+
+
+
+        $(document).on('click', '.deleteBtn', async function () {
+            let id = $(this).data('id');
+            if (confirm('Are you sure you want to delete this traveller?')) {
+                try {
+                    let res = await axios.post(`/dashboard/traveller/delete/${id}`);
+                    if (res.status === 200 && res.data.status === 'success') {
+                        successToast(res.data.message);
+                        getList();
+                    } else {
+                        errorToast(res.data.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting traveller:', error);
+                    errorToast('Failed to delete traveller.');
+                }
+            }
         });
     </script>
 
 @endsection
+
+
+
+
