@@ -44,6 +44,9 @@
         </div>
     </div>
 
+{{--    <script src="{{ asset('assets-1/js/others/jquery-3.7.1.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>--}}
+
     <script>
         $(document).ready(function () {
             getList();
@@ -75,8 +78,8 @@
                                     <td>${item.address}</td>
                                     <td><span class="${badgeClass}">${statusText}</span></td>
                                     <td>
-                                        <a href="/dashboard/travellerUpdate/${item.id}" class="btn btn-sm text-white codefotech_color mx-2 my-auto editBtn">Edit</a>
-                                        <button data-id="${item.id}" class="btn btn-sm text-white btn-danger my-auto deleteBtn">Delete</button>
+                                        <a href="/dashboard/travellerUpdate/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
+                                        <a href="javascript:void(0);" data-id="${item.id}" class="btn btn-sm text-white btn-danger deleteBtn"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>`;
                         tableList.append(row);

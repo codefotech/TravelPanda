@@ -85,7 +85,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <button class="btn btn-primary codefotech_color pull-left" onclick="updateTraveller(event)">Update</button>
+                                            <button class="btn btn-success pull-left" onclick="updateTraveller(event)">Update</button>
                                         </div>
                                     </div>
                                 </div>

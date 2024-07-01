@@ -53,7 +53,7 @@
         </li>
 
         <!-- Traveller -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ url('/dashboard/travellerList') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-plane-alt"></i>
                 <div data-i18n="Traveller">Traveller</div>
@@ -61,8 +61,8 @@
         </li>
 
         <!-- Destination -->
-        <li class="menu-item">
-            <a href="{{ url('/dashboard/destination') }}" class="menu-link">
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/destinationList') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-traffic-cone"></i>
                 <div data-i18n="Traveller">Destination</div>
             </a>

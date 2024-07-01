@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Settings\Models\PaymentConfiguration;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Mockery\Exception;
+use Exception;
 
 class PaymentConfigurationController extends Controller
 {

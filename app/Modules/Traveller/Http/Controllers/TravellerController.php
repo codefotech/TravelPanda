@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Traveller\Models\Traveller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Mockery\Exception;
+use Exception;
 
 class TravellerController extends Controller
 {
@@ -97,6 +97,12 @@ class TravellerController extends Controller
     {
         try {
             $traveller = Traveller::findOrFail($id);
+            if (!$traveller) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Traveller Not Found!!'
+                ], 404);
+            }
 
             $traveller->update([
                 'traveller_name' => $request->input('traveller_name'),
@@ -126,6 +132,12 @@ class TravellerController extends Controller
     {
         try {
             $traveller = Traveller::findOrFail($id);
+            if (!$traveller) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Traveller Not Found!!'
+                ], 404);
+            }
             $traveller->delete();
             return response()->json([
                 'status' => 'success',

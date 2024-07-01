@@ -7,7 +7,7 @@ use App\Modules\Settings\Models\GeneralSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
-use Mockery\Exception;
+use Exception;
 
 class GeneralSettingsController extends Controller
 {

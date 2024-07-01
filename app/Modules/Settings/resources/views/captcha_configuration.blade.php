@@ -20,13 +20,13 @@
                                 <div class="card shadow-sm p-3">
 
                                     <div class="form-group pb-3">
-                                        <label for="" class="control-label">Recaptcha Site Key</label>
+                                        <label for="recaptcha_site_key" class="control-label">Recaptcha Site Key</label>
                                         <div class="">
                                             <input type="text" class="form-control" id="recaptcha_site_key" maxlength="255" autocomplete="off" value="{{ $captchaData['recaptcha_site_key'] ?? '' }}">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
-                                        <label for="" class="control-label">Recaptcha Status</label>
+                                        <label for="recaptcha_status" class="control-label">Recaptcha Status</label>
                                         <div class="">
                                             <select id="recaptcha_status" name="recaptcha_status" class="form-control">
                                                 <option value="Show" {{ isset($captchaData['recaptcha_status']) && $captchaData['recaptcha_status'] == 'Show' ? 'selected' : '' }}>Show</option>

@@ -629,7 +629,7 @@
                     let data = res.data.data;
                     // Set paths for images
                     document.getElementById('imgFilePath').value = data.image ?? '';
-                    document.getElementById('old_image').src = data.image ?? '<?php echo e(asset('assets-1/img/default-img.jpg')); ?>';
+                    document.getElementById('old_image').src = data.image ?? '{{ asset('assets-1/img/default-img.jpg') }}';
 
                     // Set other form fields here
                     document.getElementById('slug').value = data.slug ?? '';

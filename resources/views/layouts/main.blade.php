@@ -48,7 +48,7 @@
 
 
     <script src="{{ asset('assets-1/css/others/jquery.dataTables.min.css') }}"></script>
-    <script src="{{ asset('assets-1/js/others/jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ asset('assets-1/js/others/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets-1/js/others/jquery.dataTables.min.js') }}"></script>
 
     {{--        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">--}}

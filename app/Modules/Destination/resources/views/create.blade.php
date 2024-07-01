@@ -19,49 +19,170 @@
                                 @csrf
                                 <div class="card shadow-sm p-3">
                                     <div class="form-group pb-3">
-                                        <label for="update_send_email" class="control-label">Send Email From
+                                        <label for="destination_name" class="control-label">Destination Name
                                             <span>*</span></label>
                                         <div class="">
-                                            <input type="text" class="form-control" id="send_email" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="destination_name"
+                                                   maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
+
                                     <div class="form-group pb-3">
-                                        <label for="update_receive_email" class="control-label">Receive Email To
+                                        <label for="heading" class="control-label">Heading
                                             <span>*</span></label>
                                         <div class="">
-                                            <input type="text" class="form-control" id="receive_email" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="heading" maxlength="255"
+                                                   autocomplete="off">
                                         </div>
                                     </div>
+
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_host" class="control-label">SMTP Host</label>
+                                        <label for="short_description" class="control-label">Short Description </label>
                                         <div class="">
-                                            <input type="text" class="form-control" id="smtp_host" maxlength="255" autocomplete="off">
+                                            <textarea class="form-control" id="short_description"
+                                                      style="height:70px;"></textarea>
                                         </div>
                                     </div>
+
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_port" class="control-label">SMTP Port</label>
+                                        <label for="package_heading" class="control-label">Package Heading
+                                            <span>*</span></label>
                                         <div class="">
-                                            <input type="text" class="form-control" id="smtp_port" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="package_heading" maxlength="255"
+                                                   autocomplete="off">
                                         </div>
                                     </div>
+
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_user" class="control-label">SMTP Username</label>
+                                        <label for="package_subheading" class="control-label">Package Subheading
+                                            <span>*</span></label>
                                         <div class="">
-                                            <input type="text" class="form-control" id="smtp_user" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="package_subheading"
+                                                   maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
+
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_password" class="control-label">SMTP Password</label>
+                                        <label for="detail_heading" class="control-label">Detail Heading
+                                            <span>*</span></label>
                                         <div class="">
-                                            <input type="password" class="form-control" id="smtp_password" maxlength="255" autocomplete="off">
+                                            <input type="text" class="form-control" id="detail_heading" maxlength="255"
+                                                   autocomplete="off">
                                         </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="detail_subheading" class="control-label">Detail Subheading
+                                            <span>*</span></label>
+                                        <div class="">
+                                            <input type="text" class="form-control" id="detail_subheading"
+                                                   maxlength="255" autocomplete="off">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="introduction" class="control-label">Introduction </label>
+                                        <div class="">
+                                            <textarea class="form-control" id="introduction"
+                                                      style="height:120px;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="experience" class="control-label">Experience </label>
+                                        <div class="">
+                                            <textarea class="form-control" id="experience"
+                                                      style="height:120px;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="weather" class="control-label">Weather </label>
+                                        <div class="">
+                                            <textarea class="form-control" id="weather"
+                                                      style="height:120px;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="hotel" class="control-label">Hotel </label>
+                                        <div class="">
+                                            <textarea class="form-control" id="hotel" style="height:120px;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="transportation" class="control-label">Transportation </label>
+                                        <div class="">
+                                            <textarea class="form-control" id="transportation"
+                                                      style="height:120px;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <label for="culture" class="control-label">Culture </label>
+                                        <div class="">
+                                            <textarea class="form-control" id="culture"
+                                                      style="height:120px;"></textarea>
+                                        </div>
+                                    </div>
+
+{{--                                    <div class="form-group pb-3">--}}
+{{--                                        <label for="" class="control-label">Featured Photo</label>--}}
+{{--                                        <div class="pt-3">--}}
+{{--                                            <img--}}
+{{--                                                src="{{ asset($destinationData['featured_photo'] ?? 'assets-1/img/default-img.jpg') }}"--}}
+{{--                                                class="existing-photo" id="old_featured_photo" style="height:80px;">--}}
+{{--                                            <br><br>--}}
+{{--                                            <input--}}
+{{--                                                oninput="old_featured_photo.src=window.URL.createObjectURL(this.files[0])"--}}
+{{--                                                type="file" class="form-control" id="featuredPhoto">--}}
+{{--                                            <br>--}}
+{{--                                            <input type="text" class="form-control" id="featuredPhotoFilePath" readonly--}}
+{{--                                                   disabled>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="form-group pb-3">--}}
+{{--                                        <label for="" class="control-label">Banner</label>--}}
+{{--                                        <div class="pt-3">--}}
+{{--                                            <img--}}
+{{--                                                src="{{ asset($destinationData['banner'] ?? 'assets-1/img/default-img.jpg') }}"--}}
+{{--                                                class="existing-photo" id="old_banner_image"--}}
+{{--                                                style="width:100%; height: 200px">--}}
+{{--                                            <br><br>--}}
+{{--                                            <input--}}
+{{--                                                oninput="old_banner_image.src=window.URL.createObjectURL(this.files[0])"--}}
+{{--                                                type="file" class="form-control" id="bannerImg">--}}
+{{--                                            <br>--}}
+{{--                                            <input type="text" class="form-control" id="bannerFilePath" readonly--}}
+{{--                                                   disabled>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+
+                                    <div class="form-group pb-3">
+                                        <img id="newFeaturedPhoto" src="{{asset('assets-1/img/default-img.jpg')}}"
+                                             style="height:80px;"/>
+                                        <br/>
+
+                                        <label class="form-label">Image</label>
+                                        <input oninput="newFeaturedPhoto.src=window.URL.createObjectURL(this.files[0])"
+                                               type="file" class="form-control" id="featured_photo">
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <img id="newBanner" src="{{asset('assets-1/img/default-img.jpg')}}"
+                                             style="height:80px;"/>
+                                        <br/>
+
+                                        <label class="form-label">Image</label>
+                                        <input oninput="newBanner.src=window.URL.createObjectURL(this.files[0])"
+                                               type="file" class="form-control" id="banner">
                                     </div>
 
                                     <div class="form-group">
                                         <div class="">
-                                            <button class="btn btn-primary codefotech_color pull-left"
-                                                    onclick="updateEmailConfiguration()">Update
-                                            </button>
+                                            <button class="btn btn-primary codefotech_color pull-left" onclick="createDestination()">Create</button>
                                         </div>
                                     </div>
                                 </div>
@@ -74,78 +195,98 @@
     </div>
 
     <script>
-
-        async function getEmailConfiguration() {
-            try {
-                let res = await axios.get('/dashboard/settings/email_configuration');
-                if (res.status === 200 && res.data.status === 'success') {
-                    let data = res.data.data;
-                    document.getElementById('send_email').value = data.send_email;
-                    document.getElementById('receive_email').value = data.receive_email;
-                    document.getElementById('smtp_host').value = data.smtp_host;
-                    document.getElementById('smtp_port').value = data.smtp_port;
-                    document.getElementById('smtp_user').value = data.smtp_user;
-                    document.getElementById('smtp_password').value = data.smtp_password;
-                } else {
-                    errorToast('Failed to fetch email configuration');
-                }
-            } catch (error) {
-                console.error('Error fetching email configuration:', error);
-                errorToast('An error occurred while fetching email configuration');
-            }
-        }
-
-
-        async function updateEmailConfiguration() {
+        async function createDestination() {
             event.preventDefault();
+
             try {
-                let updateSendEmail = document.getElementById('send_email').value;
-                let updateReceiveEmail = document.getElementById('receive_email').value;
-                let updateSMTPHost = document.getElementById('smtp_host').value;
-                let updateSMTPPort = document.getElementById('smtp_port').value;
-                let updateSMTPUser = document.getElementById('smtp_user').value;
-                let updateSMTPPassword = document.getElementById('smtp_password').value;
+                let destinationName = document.getElementById('destination_name').value;
+                let heading = document.getElementById('heading').value;
+                let shortDescription = document.getElementById('short_description').value;
+                let packageHeading = document.getElementById('package_heading').value;
+                let packageSubheading = document.getElementById('package_subheading').value;
+                let detailHeading = document.getElementById('detail_heading').value;
+                let detailSubheading = document.getElementById('detail_subheading').value;
+                let introduction = document.getElementById('introduction').value;
+                let experience = document.getElementById('experience').value;
+                let weather = document.getElementById('weather').value;
+                let hotel = document.getElementById('hotel').value;
+                let transportation = document.getElementById('transportation').value;
+                let culture = document.getElementById('culture').value;
 
-                if (!updateSendEmail) {
-                    return errorToast("Send Email Required!");
-                } else if (!updateReceiveEmail) {
-                    return errorToast("Receive Email Required!");
-                } else if (!updateSMTPHost) {
-                    return errorToast("SMTP Host Required!");
-                } else if (!updateSMTPPort) {
-                    return errorToast("SMTP Port Required!");
-                } else if (!updateSMTPUser) {
-                    return errorToast("SMTP User Required!");
-                } else if (!updateSMTPPassword) {
-                    return errorToast("SMTP Password Required!");
+                let featured_photo = document.getElementById('featured_photo').files[0];
+                let banner = document.getElementById('banner').files[0];
+
+                if (destinationName.length === 0) {
+                    errorToast("Destination Name Required !");
+                } else if (heading.length === 0) {
+                    errorToast("Heading Required !");
+                } else if (shortDescription.length === 0) {
+                    errorToast("Short Description Required !");
+                } else if (packageHeading.length === 0) {
+                    errorToast("Package Heading Required !");
+                } else if (packageSubheading.length === 0) {
+                    errorToast("Package Subheading Required !");
+                } else if (detailHeading.length === 0) {
+                    errorToast("Detail Heading Required !");
+                } else if (detailSubheading.length === 0) {
+                    errorToast("Detail Subheading Required !");
+                } else if (introduction.length === 0) {
+                    errorToast("Introduction Required !");
+                } else if (experience.length === 0) {
+                    errorToast("Experience Required !");
+                } else if (weather.length === 0) {
+                    errorToast("Weather Required !");
+                } else if (hotel.length === 0) {
+                    errorToast("Hotel Required !");
+                } else if (transportation.length === 0) {
+                    errorToast("Transportation Required !");
+                } else if (culture.length === 0) {
+                    errorToast("Culture Required !");
+                } else if (!featured_photo) {
+                    errorToast("Featured Photo Required !");
+                } else if (!banner) {
+                    errorToast("Banner Required !");
                 } else {
-                    let res = await axios.post('/dashboard/settings/email_configuration/update', {
-                        send_email: updateSendEmail,
-                        receive_email: updateReceiveEmail,
-                        smtp_host: updateSMTPHost,
-                        smtp_port: updateSMTPPort,
-                        smtp_user: updateSMTPUser,
-                        smtp_password: updateSMTPPassword,
-                    });
+                    let formData = new FormData();
 
-                    if (res.status === 200 && res.data['status'] === 'success') {
-                        successToast(res.data['message']);
-                        await getEmailConfiguration();
+                    formData.append('destination_name', destinationName);
+                    formData.append('heading', heading);
+                    formData.append('short_description', shortDescription);
+                    formData.append('package_heading', packageHeading);
+                    formData.append('package_subheading', packageSubheading);
+                    formData.append('detail_heading', detailHeading);
+                    formData.append('detail_subheading', detailSubheading);
+                    formData.append('introduction', introduction);
+                    formData.append('experience', experience);
+                    formData.append('weather', weather);
+                    formData.append('hotel', hotel);
+                    formData.append('transportation', transportation);
+                    formData.append('culture', culture);
+                    formData.append('fearured_photo', featured_photo);
+                    formData.append('banner', banner);
+
+                    const config = {
+                        header: {
+                            'content-type': 'multipart/form-data'
+                        }
+                    }
+
+                    let res = await axios.post('/dashboard/destination/create', formData, config);
+                    console.log(res);
+
+                    if (res.status === 201 && res.data.status === 'success') {
+                        successToast(res.data.message);
+                        // Redirect to the list page
+                        window.location.href = '/dashboard/destinationList';
                     } else {
-                        errorToast(res.data['message']);
+                        errorToast(res.data.message);
                     }
                 }
-
             } catch (error) {
-                console.error('Error updating email configuration:', error);
-                errorToast('An error occurred while updating email configuration');
+                console.error('Error creating destination:', error);
+                errorToast('An error occurred while creating destination');
             }
         }
 
-        // Initial fetch of payment configuration data when page loads
-        document.addEventListener('DOMContentLoaded', async () => {
-            await getEmailConfiguration();
-        });
     </script>
-
 @endsection

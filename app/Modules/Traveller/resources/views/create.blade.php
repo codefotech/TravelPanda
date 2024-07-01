@@ -140,10 +140,10 @@
                     });
 
 
-                    if (res.status === 200 && res.data['status'] === 'success') {
+                    if (res.status === 201 && res.data['status'] === 'success') {
                         successToast(res.data['message']);
-                        // await get_list();
-                        // location();
+                        // Redirect to the list page
+                        window.location.href = '/dashboard/travellerList';
                     } else {
                         errorToast(res.data['message']);
                     }

@@ -19,39 +19,39 @@
                                 @csrf
                                 <div class="card shadow-sm p-3">
                                     <div class="form-group pb-3">
-                                        <label for="update_send_email" class="control-label">Send Email From
+                                        <label for="send_email" class="control-label">Send Email From
                                             <span>*</span></label>
                                         <div class="">
                                             <input type="text" class="form-control" id="send_email" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
-                                        <label for="update_receive_email" class="control-label">Receive Email To
+                                        <label for="receive_email" class="control-label">Receive Email To
                                             <span>*</span></label>
                                         <div class="">
                                             <input type="text" class="form-control" id="receive_email" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_host" class="control-label">SMTP Host</label>
+                                        <label for="smtp_host" class="control-label">SMTP Host</label>
                                         <div class="">
                                             <input type="text" class="form-control" id="smtp_host" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_port" class="control-label">SMTP Port</label>
+                                        <label for="smtp_port" class="control-label">SMTP Port</label>
                                         <div class="">
                                             <input type="text" class="form-control" id="smtp_port" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_user" class="control-label">SMTP Username</label>
+                                        <label for="smtp_user" class="control-label">SMTP Username</label>
                                         <div class="">
                                             <input type="text" class="form-control" id="smtp_user" maxlength="255" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group pb-3">
-                                        <label for="update_smtp_password" class="control-label">SMTP Password</label>
+                                        <label for="smtp_password" class="control-label">SMTP Password</label>
                                         <div class="">
                                             <input type="password" class="form-control" id="smtp_password" maxlength="255" autocomplete="off">
                                         </div>
