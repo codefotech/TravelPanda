@@ -69,6 +69,13 @@ class DestinationController extends Controller
     }
 
 
+    public function destinationDetails($id)
+    {
+        $destination = Destination::find($id);
+        return view('Destination::detail', compact('destination'));
+    }
+
+
     public function createDestination(Request $request)
     {
         try {
@@ -76,7 +83,7 @@ class DestinationController extends Controller
             $this->deleteOldFiles($request);
 
             // Prepare File Names & Paths
-            $featuredPhotoUrl = $this->handleFileUpload('featured_photo', $request);
+            $photoUrl = $this->handleFileUpload('photo', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
 
             $destination = Destination::create([
@@ -93,25 +100,26 @@ class DestinationController extends Controller
                 'hotel' => $request->input('hotel'),
                 'transportation' => $request->input('transportation'),
                 'culture' => $request->input('culture'),
-                'featured_photo' => $featuredPhotoUrl,
+                'photo' => $photoUrl,
                 'banner' => $bannerUrl
             ]);
 
 
 
             // Save image paths to the database
-            $destination->featured_photo = $featuredPhotoUrl;
+            $destination->photo = $photoUrl;
             $destination->banner = $bannerUrl;
             $destination->save();
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Destination Created Successfully!!'
+                'message' => 'Destination Created Successfully!!',
             ], 201);
         } catch (Exception $exception) {
             return response()->json([
                 'status' => 'failure',
-                'message' => $exception->getMessage()
+                'message' => 'Failed to create destination',
+                'error' => $exception->getMessage(),
             ], 500);
         }
     }
@@ -126,19 +134,19 @@ class DestinationController extends Controller
                     'message' => 'Destination Not Found!!'
                 ], 404);
             }
-
+    
             // Delete Old Files if any
             $this->deleteOldFiles($request);
-
+    
             // Prepare File Names & Paths
-            $featuredPhotoUrl = $this->handleFileUpload('featured_photo', $request);
+            $photoUrl = $this->handleFileUpload('photo', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
-
+    
             $destination->update([
                 'destination_name' => $request->input('destination_name'),
                 'heading' => $request->input('heading'),
                 'short_description' => $request->input('short_description'),
-                'package_subheading' => $request->input('package_heading'),
+                'package_heading' => $request->input('package_heading'),
                 'package_subheading' => $request->input('package_subheading'),
                 'detail_heading' => $request->input('detail_heading'),
                 'detail_subheading' => $request->input('detail_subheading'),
@@ -148,9 +156,10 @@ class DestinationController extends Controller
                 'hotel' => $request->input('hotel'),
                 'transportation' => $request->input('transportation'),
                 'culture' => $request->input('culture'),
-                'featured_photo' => $featuredPhotoUrl ?: $destination->featured_photo,
+                'photo' => $photoUrl ?: $destination->photo,
                 'banner' => $bannerUrl ?: $destination->banner
             ]);
+    
             return response()->json([
                 'status' => 'success',
                 'message' => 'Destination Updated Successfully!!',
@@ -163,6 +172,7 @@ class DestinationController extends Controller
             ], 500);
         }
     }
+    
 
 
     public function deleteDestination($id)
@@ -198,8 +208,8 @@ class DestinationController extends Controller
             $file = $request->file($fileInputName);
             $time = time();
             $fileName = "{$time}-{$file->getClientOriginalName()}";
-            $filePath = "images/uploads/{$fileName}";
-            $file->move(public_path('images/uploads'), $fileName);
+            $filePath = "/images/uploads/{$fileName}";
+            $file->move(public_path('/images/uploads'), $fileName);
             return $filePath;
         }
         return null;
@@ -209,11 +219,11 @@ class DestinationController extends Controller
     // Helper function to delete old files
     private function deleteOldFiles(Request $request)
     {
-        $oldFeaturedPhotoPath = $request->input('file_path');
-        $oldBannerPath = $request->input('file_path');
+        $oldPhotoPath = $request->input('photo_path');
+        $oldBannerPath = $request->input('banner_path');
 
-        if ($oldFeaturedPhotoPath && File::exists(public_path($oldFeaturedPhotoPath))) {
-            File::delete(public_path($oldFeaturedPhotoPath));
+        if ($oldPhotoPath && File::exists(public_path($oldPhotoPath))) {
+            File::delete(public_path($oldPhotoPath));
         }
         if ($oldBannerPath && File::exists(public_path($oldBannerPath))) {
             File::delete(public_path($oldBannerPath));

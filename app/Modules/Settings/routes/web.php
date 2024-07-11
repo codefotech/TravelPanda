@@ -6,6 +6,7 @@ use App\Modules\Settings\Http\Controllers\EmailConfigurationController;
 use App\Modules\Settings\Http\Controllers\PagesController;
 use App\Modules\Settings\Http\Controllers\PaymentConfigurationController;
 use App\Modules\Settings\Http\Controllers\GeneralSettingsController;
+use App\Modules\Settings\Http\Controllers\SocialMediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(array('Module'=>'Settings'), function () {
@@ -14,6 +15,7 @@ Route::group(array('Module'=>'Settings'), function () {
     Route::get('/dashboard/settings/emailConfiguration', [EmailConfigurationController::class, 'emailConfiguration']);
     Route::get('/dashboard/settings/paymentConfiguration', [PaymentConfigurationController::class, 'paymentConfiguration']);
     Route::get('/dashboard/settings/captchaConfiguration', [CaptchaConfigurationController::class, 'captchaConfiguration']);
+    Route::get('/dashboard/socialMedia', [SocialMediaController::class, 'socialMedia']);
 
 
 
@@ -39,6 +41,10 @@ Route::group(array('Module'=>'Settings'), function () {
     Route::get('/dashboard/settings/pages', [PagesController::class, 'getPages']);
     Route::post('/dashboard/settings/pages/create', [PagesController::class, 'pagesCreate']);
     Route::post('/dashboard/settings/pages/update', [PagesController::class, 'pagesUpdate']);
+
+    Route::get('/dashboard/social_media', [SocialMediaController::class, 'getSocialMedia']);
+    Route::post('/dashboard/social_media/create', [SocialMediaController::class, 'socialMediaCreate']);
+    Route::post('/dashboard/social_media/update', [SocialMediaController::class, 'socialMediaUpdate']);
 
 });
 

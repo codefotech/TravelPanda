@@ -7,7 +7,7 @@
         <div class="content-header">
             <div class="row py-3">
                 <div class="col">
-                    <h4>Traveller</h4>
+                    <h4>Traveller List</h4>
                 </div>
                 <div style="text-align: right;" class="col">
                     <a href="{{ url('/dashboard/travellerCreate') }}" class="btn btn-primary codefotech_color">

@@ -5,10 +5,7 @@
 @section('main_content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="content-header">
-            <div class="d-flex position-relative">
-                <i style="font-size: 30px;top: 18px;" class="fas fa-arrow-alt-circle-right position-relative"></i>
-                <h2 class="py-3 pl-2">&nbsp; Captcha Configuration</h2>
-            </div>
+            <h4>Captcha Configuration</h4>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -38,7 +35,7 @@
                                     <div class="form-group">
                                         <label for="" class="control-label"></label>
                                         <div class="">
-                                            <button type="submit" class="btn btn-primary codefotech_color pull-left" name="form_general" onclick="updateCaptchaConfiguration()">
+                                            <button type="submit" class="btn btn-success pull-left" name="form_general" onclick="updateCaptchaConfiguration()">
                                                 Update
                                             </button>
                                         </div>

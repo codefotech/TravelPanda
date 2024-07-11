@@ -7,7 +7,7 @@
         <div class="content-header">
             <div class="row py-3">
                 <div class="col">
-                    <h4>Destination</h4>
+                    <h4>Destination List</h4>
                 </div>
                 <div style="text-align: right;" class="col">
                     <a href="{{ url('/dashboard/destinationCreate') }}" class="btn btn-primary codefotech_color">
@@ -58,15 +58,15 @@
                         let badgeClass = item.status === 'Active' ? 'text-white bg-success px-2 py-1 small rounded' : 'text-white bg-danger px-2 py-1 small rounded';
 
                         let row = `<tr>
-                                    <td>${index + 1}</td>
-                                    <td><img class="w-25 h-auto" src="${item['featured_photo']}"></td>
-                                    <td>${item.heading}</td>
-                                    <td>
-                                        <a href="/dashboard/destinationDetails/${item.id}" class="btn btn-sm text-white btn-success editBtn"><i class="fas fa-eye"></i></a>
-                                        <a href="/dashboard/destinationUpdate/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
-                                        <a href="" data-id="${item.id}" class="btn btn-sm text-white btn-danger deleteBtn"><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>`;
+                                        <td>${index + 1}</td>
+                                        <td><img style="height: 70px;width: 70px;" src="${item['photo']}"></td>
+                                        <td>${item.heading}</td>
+                                        <td>
+                                            <a href="/dashboard/destinationDetails/${item.id}" class="btn btn-sm text-white btn-success viewBtn"><i class="fas fa-eye"></i></a>
+                                            <a href="/dashboard/destinationUpdate/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
+                                            <a href="" data-id="${item.id}" class="btn btn-sm text-white btn-danger deleteBtn"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>`;
                         tableList.append(row);
                     });
 

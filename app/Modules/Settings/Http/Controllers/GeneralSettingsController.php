@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Exception;
+use App\Traits\FileUploadTrait;
 
 class GeneralSettingsController extends Controller
 {
+    use FileUploadTrait;
 
     /**
      * Display the module welcome screen
@@ -18,6 +20,7 @@ class GeneralSettingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function generalSettings():View{
+
         return view("Settings::general_settings");
     }
 
@@ -59,15 +62,18 @@ class GeneralSettingsController extends Controller
     {
         try {
             // Delete Old Files if any
-            $this->deleteOldFiles($request);
+           $this->deleteOldFiles($request);
+
 
             // Prepare File Names & Paths
             $logoUrl = $this->handleFileUpload('logo', $request);
             $faviconUrl = $this->handleFileUpload('favicon', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
-
-            // Set default value for copyright_text if not provided
-            $copyrightText = $request->input('copyright_text', '© Your Company'); // Default value here
+            // $logo = '';
+            // if ($request->hasFile('logo'))
+            // {
+            //     $logo = $this->uploadFile($request->file('logo'));
+            // }
 
             // Create General Settings
             $generalSettings = GeneralSettings::create([
@@ -76,7 +82,7 @@ class GeneralSettingsController extends Controller
                 'email' => $request->input('email'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
-                'copyright_text' => $copyrightText,
+                'copyright_text' => $request->input('copyright_text'),
                 'stunning_place' => $request->input('stunning_place'),
                 'satisfied_customer' => $request->input('satisfied_customer'),
                 'travel_places' => $request->input('travel_places'),
@@ -84,7 +90,6 @@ class GeneralSettingsController extends Controller
             ]);
 
             // Save image paths to the database
-            $generalSettings->logo = $logoUrl;
             $generalSettings->favicon = $faviconUrl;
             $generalSettings->banner = $bannerUrl;
             $generalSettings->save();
@@ -96,10 +101,57 @@ class GeneralSettingsController extends Controller
         } catch (Exception $exception) {
             return response()->json([
                 'status' => 'failure',
-                'message' => $exception->getMessage()
+                'message' => 'Failed to create general settings',
+                'error' => $exception->getMessage(),
             ], 500);
         }
     }
+
+//    public function generalSettingsCreate(Request $request)
+//    {
+//        try {
+//            // Delete Old Files if any
+//            $this->deleteOldFiles($request);
+//
+//            // Prepare File Names & Paths
+//            $logoUrl = $this->handleFileUpload('logo', $request);
+//            $faviconUrl = $this->handleFileUpload('favicon', $request);
+//            $bannerUrl = $this->handleFileUpload('banner', $request);
+//
+//            // Set default value for copyright_text if not provided
+//            $copyrightText = $request->input('copyright_text', '© Your Company'); // Default value here
+//
+//            // Create General Settings
+//            $generalSettings = GeneralSettings::create([
+//                'logo' => $logoUrl,
+//                'favicon' => $faviconUrl,
+//                'email' => $request->input('email'),
+//                'phone' => $request->input('phone'),
+//                'address' => $request->input('address'),
+//                'copyright_text' => $copyrightText,
+//                'stunning_place' => $request->input('stunning_place'),
+//                'satisfied_customer' => $request->input('satisfied_customer'),
+//                'travel_places' => $request->input('travel_places'),
+//                'banner' => $bannerUrl
+//            ]);
+//
+//            // Save image paths to the database
+//            $generalSettings->logo = $logoUrl;
+//            $generalSettings->favicon = $faviconUrl;
+//            $generalSettings->banner = $bannerUrl;
+//            $generalSettings->save();
+//
+//            return response()->json([
+//                'status' => 'success',
+//                'message' => 'General Settings Created Successfully!!'
+//            ], 201);
+//        } catch (Exception $exception) {
+//            return response()->json([
+//                'status' => 'failure',
+//                'message' => $exception->getMessage()
+//            ], 500);
+//        }
+//    }
 
 
     public function generalSettingsUpdate(Request $request)
@@ -122,9 +174,6 @@ class GeneralSettingsController extends Controller
             $faviconUrl = $this->handleFileUpload('favicon', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
 
-            // Set default value for copyright_text if not provided
-            $copyrightText = $request->input('copyright_text', $generalSettings->copyright_text); // Retain existing value
-
             // Update general settings
             $generalSettings->update([
                 'logo' => $logoUrl ?: $generalSettings->logo,
@@ -132,7 +181,7 @@ class GeneralSettingsController extends Controller
                 'email' => $request->input('email'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
-                'copyright_text' => $copyrightText,
+                'copyright_text' => $request->input('copyright_text'),
                 'stunning_place' => $request->input('stunning_place'),
                 'satisfied_customer' => $request->input('satisfied_customer'),
                 'travel_places' => $request->input('travel_places'),
@@ -162,8 +211,8 @@ class GeneralSettingsController extends Controller
             $file = $request->file($fileInputName);
             $time = time();
             $fileName = "{$time}-{$file->getClientOriginalName()}";
-            $filePath = "images/uploads/{$fileName}";
-            $file->move(public_path('images/uploads'), $fileName);
+            $filePath = "/images/uploads/{$fileName}";
+            $file->move(public_path('/images/uploads'), $fileName);
             return $filePath;
         }
         return null;

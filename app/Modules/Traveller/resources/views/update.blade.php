@@ -7,7 +7,7 @@
         <div class="content-header">
             <div style="" class="row py-3">
                 <div class="col">
-                    <h4>Traveller</h4>
+                    <h4>Traveller Update</h4>
                 </div>
                 <div style="text-align: right;" class="col">
                     <a href="{{ url('/dashboard/travellerList') }}" class="btn btn-primary codefotech_color">
@@ -85,7 +85,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <button class="btn btn-success pull-left" onclick="updateTraveller(event)">Update</button>
+                                            <button type="button" class="btn btn-success pull-left" onclick="updateTraveller(event)">Update</button>
                                         </div>
                                     </div>
                                 </div>

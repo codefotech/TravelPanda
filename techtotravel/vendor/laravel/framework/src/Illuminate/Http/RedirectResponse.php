@@ -12,8 +12,7 @@ use Illuminate\Support\ViewErrorBag;
 use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse as BaseRedirectResponse;
 
-class RedirectResponse extends BaseRedirectResponse
-{
+class RedirectResponse extends BaseRedirectResponse {
     use ForwardsCalls, ResponseTrait, Macroable {
         Macroable::__call as macroCall;
     }
@@ -39,12 +38,11 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  mixed  $value
      * @return $this
      */
-    public function with($key, $value = null)
-    {
-        $key = is_array($key) ? $key : [$key => $value];
+    public function with( $key, $value = null ) {
+        $key = is_array( $key ) ? $key : array($key => $value);
 
-        foreach ($key as $k => $v) {
-            $this->session->flash($k, $v);
+        foreach ( $key as $k => $v ) {
+            $this->session->flash( $k, $v );
         }
 
         return $this;
@@ -56,10 +54,9 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  array  $cookies
      * @return $this
      */
-    public function withCookies(array $cookies)
-    {
-        foreach ($cookies as $cookie) {
-            $this->headers->setCookie($cookie);
+    public function withCookies( array $cookies ) {
+        foreach ( $cookies as $cookie ) {
+            $this->headers->setCookie( $cookie );
         }
 
         return $this;
@@ -71,11 +68,10 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  array|null  $input
      * @return $this
      */
-    public function withInput(array $input = null)
-    {
-        $this->session->flashInput($this->removeFilesFromInput(
-            ! is_null($input) ? $input : $this->request->input()
-        ));
+    public function withInput( array $input = null ) {
+        $this->session->flashInput( $this->removeFilesFromInput(
+            !is_null( $input ) ? $input : $this->request->input()
+        ) );
 
         return $this;
     }
@@ -86,15 +82,14 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  array  $input
      * @return array
      */
-    protected function removeFilesFromInput(array $input)
-    {
-        foreach ($input as $key => $value) {
-            if (is_array($value)) {
-                $input[$key] = $this->removeFilesFromInput($value);
+    protected function removeFilesFromInput( array $input ) {
+        foreach ( $input as $key => $value ) {
+            if ( is_array( $value ) ) {
+                $input[$key] = $this->removeFilesFromInput( $value );
             }
 
-            if ($value instanceof SymfonyUploadedFile) {
-                unset($input[$key]);
+            if ( $value instanceof SymfonyUploadedFile ) {
+                unset( $input[$key] );
             }
         }
 
@@ -106,9 +101,8 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @return $this
      */
-    public function onlyInput()
-    {
-        return $this->withInput($this->request->only(func_get_args()));
+    public function onlyInput() {
+        return $this->withInput( $this->request->only( func_get_args() ) );
     }
 
     /**
@@ -116,9 +110,8 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @return $this
      */
-    public function exceptInput()
-    {
-        return $this->withInput($this->request->except(func_get_args()));
+    public function exceptInput() {
+        return $this->withInput( $this->request->except( func_get_args() ) );
     }
 
     /**
@@ -128,18 +121,17 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  string  $key
      * @return $this
      */
-    public function withErrors($provider, $key = 'default')
-    {
-        $value = $this->parseErrors($provider);
+    public function withErrors( $provider, $key = 'default' ) {
+        $value = $this->parseErrors( $provider );
 
-        $errors = $this->session->get('errors', new ViewErrorBag);
+        $errors = $this->session->get( 'errors', new ViewErrorBag );
 
-        if (! $errors instanceof ViewErrorBag) {
+        if ( !$errors instanceof ViewErrorBag ) {
             $errors = new ViewErrorBag;
         }
 
         $this->session->flash(
-            'errors', $errors->put($key, $value)
+            'errors', $errors->put( $key, $value )
         );
 
         return $this;
@@ -151,13 +143,12 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  \Illuminate\Contracts\Support\MessageProvider|array|string  $provider
      * @return \Illuminate\Support\MessageBag
      */
-    protected function parseErrors($provider)
-    {
-        if ($provider instanceof MessageProvider) {
+    protected function parseErrors( $provider ) {
+        if ( $provider instanceof MessageProvider ) {
             return $provider->getMessageBag();
         }
 
-        return new MessageBag((array) $provider);
+        return new MessageBag( (array) $provider );
     }
 
     /**
@@ -166,10 +157,9 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  string  $fragment
      * @return $this
      */
-    public function withFragment($fragment)
-    {
+    public function withFragment( $fragment ) {
         return $this->withoutFragment()
-                ->setTargetUrl($this->getTargetUrl().'#'.Str::after($fragment, '#'));
+            ->setTargetUrl( $this->getTargetUrl() . '#' . Str::after( $fragment, '#' ) );
     }
 
     /**
@@ -177,9 +167,8 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @return $this
      */
-    public function withoutFragment()
-    {
-        return $this->setTargetUrl(Str::before($this->getTargetUrl(), '#'));
+    public function withoutFragment() {
+        return $this->setTargetUrl( Str::before( $this->getTargetUrl(), '#' ) );
     }
 
     /**
@@ -187,8 +176,7 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @return null
      */
-    public function getOriginalContent()
-    {
+    public function getOriginalContent() {
         //
     }
 
@@ -197,8 +185,7 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @return \Illuminate\Http\Request|null
      */
-    public function getRequest()
-    {
+    public function getRequest() {
         return $this->request;
     }
 
@@ -208,8 +195,7 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    public function setRequest(Request $request)
-    {
+    public function setRequest( Request $request ) {
         $this->request = $request;
     }
 
@@ -218,8 +204,7 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @return \Illuminate\Session\Store|null
      */
-    public function getSession()
-    {
+    public function getSession() {
         return $this->session;
     }
 
@@ -229,8 +214,7 @@ class RedirectResponse extends BaseRedirectResponse
      * @param  \Illuminate\Session\Store  $session
      * @return void
      */
-    public function setSession(SessionStore $session)
-    {
+    public function setSession( SessionStore $session ) {
         $this->session = $session;
     }
 
@@ -243,16 +227,15 @@ class RedirectResponse extends BaseRedirectResponse
      *
      * @throws \BadMethodCallException
      */
-    public function __call($method, $parameters)
-    {
-        if (static::hasMacro($method)) {
-            return $this->macroCall($method, $parameters);
+    public function __call( $method, $parameters ) {
+        if ( static::hasMacro( $method ) ) {
+            return $this->macroCall( $method, $parameters );
         }
 
-        if (str_starts_with($method, 'with')) {
-            return $this->with(Str::snake(substr($method, 4)), $parameters[0]);
+        if ( str_starts_with( $method, 'with' ) ) {
+            return $this->with( Str::snake( substr( $method, 4 ) ), $parameters[0] );
         }
 
-        static::throwBadMethodCallException($method);
+        static::throwBadMethodCallException( $method );
     }
 }

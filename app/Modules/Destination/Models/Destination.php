@@ -25,22 +25,7 @@ class Destination extends Model
         'hotel',
         'transportation',
         'culture',
-        'featured_photo',
+        'photo',
         'banner',
     ];
 }
-//Destination Name
-//Heading
-//Short Description
-//Package Heading
-//Package Subheading
-//Detail Heading
-//Detail Subheading
-//Introduction
-//Experience
-//Weather
-//Hotel
-//Transportation
-//Culture
-//Featured Photo
-//Banner
