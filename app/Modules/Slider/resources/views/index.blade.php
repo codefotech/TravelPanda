@@ -88,9 +88,9 @@
 
         $(document).on('click', '.deleteBtn', async function () {
             let id = $(this).data('id');
-            if (confirm('Are you sure you want to delete this destination?')) {
+            if (confirm('Are you sure you want to delete this slider?')) {
                 try {
-                    let res = await axios.post(`/dashboard/destination/delete/${id}`);
+                    let res = await axios.post(`/dashboard/slider/delete/${id}`);
                     if (res.status === 200 && res.data.status === 'success') {
                         alert(res.data.message);
                         getList();
@@ -98,8 +98,8 @@
                         alert(res.data.message);
                     }
                 } catch (error) {
-                    console.error('Error deleting destination:', error);
-                    alert('Failed to delete destination.');
+                    console.error('Error deleting slider:', error);
+                    alert('Failed to delete slider.');
                 }
             }
         });

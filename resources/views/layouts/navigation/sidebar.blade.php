@@ -93,7 +93,7 @@
         </li>
 
         <!-- Testimonial -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ url('/dashboard/testimonial') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div>Testimonial</div>
@@ -101,7 +101,7 @@
         </li>
 
         <!-- Client -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ url('/dashboard/client') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-check"></i>
                 <div>Client</div>
