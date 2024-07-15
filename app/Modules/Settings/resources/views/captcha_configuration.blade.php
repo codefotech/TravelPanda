@@ -53,7 +53,7 @@
     <script>
         async function getCaptchaConfiguration() {
             try {
-                let res = await axios.get('/dashboard/settings/captcha_configuration');
+                let res = await axios.get('/dashboard/settings/captcha_configuration/get');
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
                     document.getElementById('recaptcha_site_key').value = data.recaptcha_site_key;

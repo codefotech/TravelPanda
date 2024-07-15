@@ -50,7 +50,7 @@ class DestinationController extends Controller
         }
     }
 
-    public function get_destination($id)
+    public function getDestination($id)
     {
         try {
             $destination = Destination::findOrFail($id);
@@ -134,14 +134,14 @@ class DestinationController extends Controller
                     'message' => 'Destination Not Found!!'
                 ], 404);
             }
-    
+
             // Delete Old Files if any
             $this->deleteOldFiles($request);
-    
+
             // Prepare File Names & Paths
             $photoUrl = $this->handleFileUpload('photo', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
-    
+
             $destination->update([
                 'destination_name' => $request->input('destination_name'),
                 'heading' => $request->input('heading'),
@@ -159,7 +159,7 @@ class DestinationController extends Controller
                 'photo' => $photoUrl ?: $destination->photo,
                 'banner' => $bannerUrl ?: $destination->banner
             ]);
-    
+
             return response()->json([
                 'status' => 'success',
                 'message' => 'Destination Updated Successfully!!',
@@ -172,7 +172,7 @@ class DestinationController extends Controller
             ], 500);
         }
     }
-    
+
 
 
     public function deleteDestination($id)

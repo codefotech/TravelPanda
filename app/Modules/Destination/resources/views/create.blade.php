@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('title', 'Destination')
+@section('title', 'Destination Create')
 
 @section('main_content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -10,7 +10,7 @@
                     <h4>Destination Create</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/destinationList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/destination') }}" class="btn btn-primary codefotech_color">
                         List
                     </a>
                 </div>
@@ -248,7 +248,7 @@
                     if (res.status === 201 && res.data.status === 'success') {
                         successToast(res.data.message);
                         // Redirect to the list page
-                        window.location.href = '/dashboard/destinationList';
+                        window.location.href = '/dashboard/destination';
                     } else {
                         errorToast(res.data.message);
                     }

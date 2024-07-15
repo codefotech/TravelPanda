@@ -12,7 +12,7 @@
                     <h4>Package Details</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/packageList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/package') }}" class="btn btn-primary codefotech_color">
                         List
                     </a>
                 </div>

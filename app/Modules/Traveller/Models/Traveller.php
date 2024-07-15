@@ -19,6 +19,6 @@ class Traveller extends Model
         'state',
         'country',
         'address',
-        'status',
+        'status'
     ];
 }

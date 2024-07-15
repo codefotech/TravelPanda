@@ -74,7 +74,7 @@
 
         async function getEmailConfiguration() {
             try {
-                let res = await axios.get('/dashboard/settings/email_configuration');
+                let res = await axios.get('/dashboard/settings/email_configuration/get');
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
                     document.getElementById('send_email').value = data.send_email;

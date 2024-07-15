@@ -10,7 +10,7 @@
                     <h4>Traveller Create</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/travellerList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/traveller') }}" class="btn btn-primary codefotech_color">
                         List
                     </a>
                 </div>
@@ -143,7 +143,7 @@
                     if (res.status === 201 && res.data['status'] === 'success') {
                         successToast(res.data['message']);
                         // Redirect to the list page
-                        window.location.href = '/dashboard/travellerList';
+                        window.location.href = '/dashboard/traveller';
                     } else {
                         errorToast(res.data['message']);
                     }

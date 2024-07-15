@@ -10,7 +10,7 @@
                     <h4>Traveller Update</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/travellerList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/traveller') }}" class="btn btn-primary codefotech_color">
                         List
                     </a>
                 </div>

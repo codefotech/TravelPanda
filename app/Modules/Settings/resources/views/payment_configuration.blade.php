@@ -86,7 +86,7 @@
         // Function to fetch payment configuration data
         async function getPaymentConfiguration() {
             try {
-                let res = await axios.get('/dashboard/settings/payment_configuration');
+                let res = await axios.get('/dashboard/settings/payment_configuration/get');
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
                     document.getElementById('paypal_email').value = data.paypal_email;

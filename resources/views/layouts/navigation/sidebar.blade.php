@@ -30,22 +30,22 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/generalSettings') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/general_settings') }}" class="menu-link">
                         <div>General Settings</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/emailConfiguration') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/email_configuration') }}" class="menu-link">
                         <div>Email Configuration</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/paymentConfiguration') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/payment_configuration') }}" class="menu-link">
                         <div>Payment Configuration</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('/dashboard/settings/captchaConfiguration') }}" class="menu-link">
+                    <a href="{{ url('/dashboard/settings/captcha_configuration') }}" class="menu-link">
                         <div>Captcha Configuration</div>
                     </a>
                 </li>
@@ -54,7 +54,7 @@
 
         <!-- Traveller -->
         <li class="menu-item">
-            <a href="{{ url('/dashboard/travellerList') }}" class="menu-link">
+            <a href="{{ url('/dashboard/traveller') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-plane-alt"></i>
                 <div>Traveller</div>
             </a>
@@ -62,7 +62,7 @@
 
         <!-- Destination -->
         <li class="menu-item">
-            <a href="{{ url('/dashboard/destinationList') }}" class="menu-link">
+            <a href="{{ url('/dashboard/destination') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-traffic-cone"></i>
                 <div>Destination</div>
             </a>
@@ -70,23 +70,71 @@
 
         <!-- Package -->
         <li class="menu-item">
-            <a href="{{ url('/dashboard/packageList') }}" class="menu-link">
+            <a href="{{ url('/dashboard/package') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-collection"></i>
                 <div>Package</div>
             </a>
         </li>
 
-        <!-- Social Media -->
-        <li class="menu-item active">
-            <a href="{{ url('/dashboard/teamMember') }}" class="menu-link">
+        <!-- Team Member -->
+        <li class="menu-item">
+            <a href="{{ url('/dashboard/team_member') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-account"></i>
                 <div>Team Member</div>
             </a>
         </li>
 
+        <!-- Slider -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/slider') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-carousel"></i>
+                <div>Slider</div>
+            </a>
+        </li>
+
+        <!-- Testimonial -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/testimonial') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user-plus"></i>
+                <div>Testimonial</div>
+            </a>
+        </li>
+
+        <!-- Client -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/client') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user-check"></i>
+                <div>Client</div>
+            </a>
+        </li>
+
+        <!-- Service -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/service') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-wrench"></i>
+                <div>Service</div>
+            </a>
+        </li>
+
+        <!-- Payment -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/payment') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-badge-dollar"></i>
+                <div>Payment</div>
+            </a>
+        </li>
+
+        <!-- FAQ -->
+        <li class="menu-item active">
+            <a href="{{ url('/dashboard/faq') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-hand"></i>
+                <div>FAQ</div>
+            </a>
+        </li>
+
         <!-- Social Media -->
         <li class="menu-item">
-            <a href="{{ url('/dashboard/socialMedia') }}" class="menu-link">
+            <a href="{{ url('/dashboard/social_media') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-network-chart"></i>
                 <div>Social Media</div>
             </a>

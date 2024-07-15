@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('title', 'Destination')
+@section('title', 'Destination Update')
 
 @section('main_content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -10,7 +10,7 @@
                     <h4>Destination Update</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/destinationList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/destination') }}" class="btn btn-primary codefotech_color">
                         List
                     </a>
                 </div>

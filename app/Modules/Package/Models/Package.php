@@ -10,7 +10,7 @@ class Package extends Model {
 
     protected $table = 'package';
 
-    protected $fillable = array(
+    protected $fillable = [
         'package_name',
         'destination_name',
         'description',
@@ -29,7 +29,7 @@ class Package extends Model {
         'banner',
         'tour_photos',
         'tour_videos',
-    );
+    ];
 }
 
 //Package Name

@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('title', 'Destination')
+@section('title', 'Destination List')
 
 @section('main_content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -10,7 +10,7 @@
                     <h4>Destination List</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/destinationCreate') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/destination_create') }}" class="btn btn-primary codefotech_color">
                         Add Destination
                     </a>
                 </div>
@@ -46,7 +46,7 @@
         async function getList() {
             try {
                 // let res = await axios.get('/dashboard/destination/get');
-                let res = await axios.get('/dashboard/allDestination');
+                let res = await axios.get('/dashboard/destination/all');
 
                 console.log(res);
 
@@ -62,8 +62,8 @@
                                         <td><img style="height: 70px;width: 70px;" src="${item['photo']}"></td>
                                         <td>${item.heading}</td>
                                         <td>
-                                            <a href="/dashboard/destinationDetails/${item.id}" class="btn btn-sm text-white btn-success viewBtn"><i class="fas fa-eye"></i></a>
-                                            <a href="/dashboard/destinationUpdate/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
+                                            <a href="/dashboard/destination_details/${item.id}" class="btn btn-sm text-white btn-success viewBtn"><i class="fas fa-eye"></i></a>
+                                            <a href="/dashboard/destination_update/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
                                             <a href="" data-id="${item.id}" class="btn btn-sm text-white btn-danger deleteBtn"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>`;

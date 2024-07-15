@@ -124,7 +124,7 @@
     <script>
         async function getGeneralSettings() {
             try {
-                let res = await axios.get('/dashboard/settings/general_settings');
+                let res = await axios.get('/dashboard/settings/general_settings/get');
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
                     // Set paths for images

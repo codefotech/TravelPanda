@@ -10,7 +10,7 @@
                     <h4>Package List</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/packageCreate') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/package_create') }}" class="btn btn-primary codefotech_color">
                         Add Package
                     </a>
                 </div>
@@ -26,7 +26,6 @@
                                 <th>SL</th>
                                 <th>Featured Photo</th>
                                 <th>Package Name</th>
-                                <th>Destination</th>
                                 <th>Tour Dates</th>
                                 <th>Price</th>
                                 <th>Action</th>
@@ -48,7 +47,7 @@
 
         async function getPackages() {
             try {
-                let res = await axios.get('/dashboard/allPackages');
+                let res = await axios.get('/dashboard/package/all');
 
                 if (res.status === 200 && res.data.status === 'success') {
                     let tableList = $('#tableList');
@@ -60,12 +59,11 @@
                                 <td>${index + 1}</td>
                                 <td><img style="height: 70px;width: 70px;" src="${item.photo}"></td>
                                 <td>${item.package_name}</td>
-                                <td>${item.destination_name}</td>
                                 <td>${item.tour_start_date} - ${item.tour_end_date}</td>
                                 <td>${item.price}</td>
                                 <td>
-                                    <a href="/dashboard/packageDetails/${item.id}" class="btn btn-sm text-white btn-success viewBtn"><i class="fas fa-eye"></i></a>
-                                    <a href="/dashboard/packageUpdate/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
+                                    <a href="/dashboard/package_details/${item.id}" class="btn btn-sm text-white btn-success viewBtn"><i class="fas fa-eye"></i></a>
+                                    <a href="/dashboard/package_update/${item.id}" class="btn btn-sm text-white codefotech_color editBtn"><i class="fas fa-edit"></i></a>
                                     <a href="#" data-id="${item.id}" class="btn btn-sm text-white btn-danger deleteBtn"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>`;

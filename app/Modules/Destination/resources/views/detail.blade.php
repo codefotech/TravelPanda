@@ -12,7 +12,7 @@
                     <h4>Destination Details</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/destinationList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/destination') }}" class="btn btn-primary codefotech_color">
                         List
                     </a>
                 </div>

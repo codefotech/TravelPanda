@@ -147,7 +147,7 @@
     <script>
         async function getSocialMedia() {
             try {
-                let res = await axios.get('/dashboard/social_media');
+                let res = await axios.get('/dashboard/social_media/get');
                 if (res.status === 200 && res.data.status === 'success') {
                     let data = res.data.data;
                     document.getElementById('facebook').value = data.facebook;

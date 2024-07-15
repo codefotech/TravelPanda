@@ -10,7 +10,7 @@
                     <h4>Create Package</h4>
                 </div>
                 <div style="text-align: right;" class="col">
-                    <a href="{{ url('/dashboard/packageList') }}" class="btn btn-primary codefotech_color">
+                    <a href="{{ url('/dashboard/package') }}" class="btn btn-primary codefotech_color">
                         Back to List
                     </a>
                 </div>
@@ -270,7 +270,7 @@
                     if (res.status === 201 && res.data.status === 'success') {
                         successToast(res.data.message);
                         // Redirect to the list page
-                        window.location.href = '/dashboard/packageList';
+                        window.location.href = '/dashboard/package';
                     } else {
                         errorToast(res.data.message);
                     }

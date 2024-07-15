@@ -46,7 +46,7 @@ class PackageController extends Controller {
         }
     }
 
-    public function get_package( $id ) {
+    public function getPackage( $id ) {
         try {
             $package = Package::findOrFail( $id );
             return response()->json([

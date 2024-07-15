@@ -49,7 +49,7 @@ class TravellerController extends Controller
         }
     }
 
-    public function get_traveller($id)
+    public function getTraveller($id)
     {
         try {
             $traveller = Traveller::findOrFail($id);
@@ -65,6 +65,12 @@ class TravellerController extends Controller
                 'error' => $exception->getMessage()
             ], 500);
         }
+    }
+
+    public function travellerDetails($id)
+    {
+        $traveller = Traveller::find($id);
+        return view('Traveller::detail', compact('traveller'));
     }
 
 
