@@ -164,7 +164,7 @@
                                         <label for="" class="control-label">Existing Photo</label>
                                         <div class="pt-3">
                                             <img src="{{ asset($teamMemberData['photo'] ?? 'assets-1/img/default-img.jpg') }}"
-                                                 class="existing-photo" id="oldPhoto" style="height:80px;">
+                                                 class="existing-photo" id="oldPhoto" style="height:120px;">
                                             <br><br>
                                             <input
                                                 oninput="document.getElementById('oldPhoto').src = window.URL.createObjectURL(this.files[0])"

@@ -117,7 +117,7 @@
                         <!-- Featured Photo -->
                         <div class="form-group pb-3">
                             <img id="newPhoto" src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                style="height:80px;" />
+                                style="height:120px;" />
                             <br />
 
                             <label class="form-label">Existing Photo</label>
@@ -129,7 +129,7 @@
                         <!-- Banner -->
                         <div class="form-group pb-3">
                             <img id="newBanner" src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                style="height:80px;" />
+                                style="height:200px; width: 100%" />
                             <br />
 
                             <label class="form-label">Existing Banner</label>
@@ -141,7 +141,7 @@
                         <!-- Tour Photos -->
                         <div class="form-group pb-3">
                             <img id="newTourPhotos" src="{{ asset('assets-1/img/default-img.jpg') }}"
-                                style="height:80px;" />
+                                style="height:120px;" />
                             <br />
 
                             <label class="form-label">Existing Tour Photos</label>

@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <td>Banner</td>
-                            <td><img style="height:120px;" src="{{ $package->banner }}"></td>
+                            <td><img style="height:200px; width: 100%" src="{{ $package->banner }}"></td>
                         </tr>
                         <tr>
                             <td>Tour Photos</td>
@@ -100,7 +100,7 @@
                         </tr>
                         <tr>
                             <td>Tour Videos</td>
-                            <td><img style="height:120px;" src="{{ $package->tour_videos }}"></td>
+                            <td><img style="height:auto;" src="{{ $package->tour_videos }}"></td>
                         </tr>
                         </tbody>
                     </table>

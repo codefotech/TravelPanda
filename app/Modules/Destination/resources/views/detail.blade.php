@@ -88,11 +88,11 @@
                         </tr>
                         <tr>
                             <td>Photo</td>
-                            <td><img style="height:120px;" src="{{ $destination->photo }}"></td>
+                            <td><img style="width:120px;" src="{{ $destination->photo }}"></td>
                         </tr>
                         <tr>
                             <td>Banner</td>
-                            <td><img style="height:120px;" src="{{ $destination->banner }}"></td>
+                            <td><img style="height:200px; width: 100%" src="{{ $destination->banner }}"></td>
                         </tr>
                         </tbody>
                     </table>

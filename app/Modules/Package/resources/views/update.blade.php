@@ -122,7 +122,7 @@
                             <label for="" class="control-label">Existing Photo</label>
                             <div class="pt-3">
                                 <img src="{{ asset($packageData['photo'] ?? 'assets-1/img/default-img.jpg') }}"
-                                    class="existing-photo" id="oldPhoto" style="height:80px;">
+                                    class="existing-photo" id="oldPhoto" style="height:120px;">
                                 <br><br>
                                 <input
                                     oninput="document.getElementById('oldPhoto').src = window.URL.createObjectURL(this.files[0])"
@@ -156,7 +156,7 @@
                             <label for="" class="control-label">Existing Photo</label>
                             <div class="pt-3">
                                 <img src="{{ asset($packageData['tour_photos'] ?? 'assets-1/img/default-img.jpg') }}"
-                                    class="existing-photo" id="oldTourPhotos" style="height:80px;">
+                                    class="existing-photo" id="oldTourPhotos" style="height:120px;">
                                 <br><br>
                                 <input
                                     oninput="document.getElementById('oldTourPhotos').src = window.URL.createObjectURL(this.files[0])"
@@ -171,7 +171,7 @@
                         <div class="form-group pb-3">
                             <label for="" class="control-label">Existing Tour Videos</label>
                             <div class="pt-3">
-                                <video controls style="height: auto; max-width: 100%;" id="oldTourVideos">
+                                <video controls style=": autoheight; max-width: 100%;" id="oldTourVideos">
                                     <source
                                         src="{{ asset($packageData['tour_videos'] ?? 'assets-1/video/default-video.mp4') }}"
                                         type="video/mp4">

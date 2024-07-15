@@ -85,7 +85,7 @@
         </li>
 
         <!-- Slider -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ url('/dashboard/slider') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-carousel"></i>
                 <div>Slider</div>

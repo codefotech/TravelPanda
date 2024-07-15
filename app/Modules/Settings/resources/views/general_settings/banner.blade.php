@@ -11,7 +11,7 @@
                                 <td style="width:50%">
                                     <h4>Existing Banner</h4>
                                     <img src="{{ asset($generalSettingsData['banner'] ?? 'assets-1/img/default-img.jpg') }}"
-                                        class="existing-photo" id="banner_old_image" style="height:auto; width: 100%">
+                                        class="existing-photo" id="banner_old_image" style="height:120px; width: 100%">
                                     <br><br>
                                     <input oninput="banner_old_image.src=window.URL.createObjectURL(this.files[0])"
                                         type="file" class="form-control" id="bannerImgUpdate">

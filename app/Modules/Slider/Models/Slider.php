@@ -12,10 +12,10 @@ class Slider extends Model
     protected $table = 'slider';
 
     protected $fillable = [
-        'photo',
         'heading',
         'content',
         'button_text',
-        'button_url'
+        'button_url',
+        'photo'
     ];
 }

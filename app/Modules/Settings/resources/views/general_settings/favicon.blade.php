@@ -6,7 +6,7 @@
             <label for="" class="control-label">Existing Favicon</label>
             <div class="" style="padding-top:6px;">
                 <img src="{{ asset($generalSettingsData['favicon'] ?? 'assets-1/img/default-img.jpg') }}"
-                    class="existing-photo" id="favicon_old_image" style="height:40px;">
+                    class="existing-photo" id="favicon_old_image" style="height:40px; width: 40px">
                 <br><br>
                 <input oninput="favicon_old_image.src=window.URL.createObjectURL(this.files[0])" type="file"
                     class="form-control" id="faviconImgUpdate">

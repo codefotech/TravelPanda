@@ -41,7 +41,7 @@
                     <label for="" class=control-label">Existing Photo</label>
                     <div class="" style="padding-top:6px;">
                         <img src="{{ asset($pagesData['image'] ?? 'assets-1/img/default-img.jpg') }}"
-                            class="existing-photo" id="old_image" style="height:80px;">
+                            class="existing-photo" id="old_image" style="height:120px;">
                         <br><br>
                         <input oninput="old_image.src=window.URL.createObjectURL(this.files[0])" type="file"
                             class="form-control" id="imgUpdate">
