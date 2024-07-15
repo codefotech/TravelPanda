@@ -47,7 +47,7 @@
                                     <div class="form-group pb-3">
                                         <label for="details" class="control-label">Details</label>
                                         <div class="">
-                                            <textarea class="form-control" id="details" style="height:70px;"></textarea>
+                                            <textarea class="form-control tinymce-editor" id="details" style="height:70px;"></textarea>
                                         </div>
                                     </div>
 
@@ -207,7 +207,15 @@
         </div>
     </div>
 
+    <script src="{{ asset('vendor/tinymce/tinymce/tinymce.min.js') }}"></script>
     <script>
+        tinymce.init({
+            selector: '.tinymce-editor',
+            height: 300,
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+        });
+
         async function getTeamMember() {
             let id = document.getElementById('team_member_id').value;
             try {
@@ -247,14 +255,13 @@
             }
         }
 
-
         async function updateTeamMember() {
             event.preventDefault();
             try {
                 let id = document.getElementById('team_member_id').value;
                 let memberName = document.getElementById('member_name').value;
                 let designation = document.getElementById('designation').value;
-                let details = document.getElementById('details').value;
+                let details = tinymce.get('details').getContent();
                 let facebook = document.getElementById('facebook').value;
                 let instagram = document.getElementById('instagram').value;
                 let twitter = document.getElementById('twitter').value;

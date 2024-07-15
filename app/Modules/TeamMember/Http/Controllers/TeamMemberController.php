@@ -86,10 +86,13 @@ class TeamMemberController extends Controller
             $photoUrl = $this->handleFileUpload('photo', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
 
+            // Clean up details to strip <p> tags
+            $cleanedDetails = strip_tags($request->input('details'));
+
             $team_member = TeamMember::create([
                 'member_name' => $request->input('member_name'),
                 'designation' => $request->input('designation'),
-                'details' => $request->input('details'),
+                'details' => $cleanedDetails,
                 'facebook' => $request->input('facebook'),
                 'instagram' => $request->input('instagram'),
                 'twitter' => $request->input('twitter'),
@@ -126,6 +129,8 @@ class TeamMemberController extends Controller
     }
 
 
+// TeamMemberController.php
+
     public function updateTeamMember(Request $request, $id)
     {
         try {
@@ -144,10 +149,13 @@ class TeamMemberController extends Controller
             $photoUrl = $this->handleFileUpload('photo', $request);
             $bannerUrl = $this->handleFileUpload('banner', $request);
 
+            // Clean up details to strip <p> tags
+            $cleanedDetails = strip_tags($request->input('details'));
+
             $team_member->update([
                 'member_name' => $request->input('member_name'),
                 'designation' => $request->input('designation'),
-                'details' => $request->input('details'),
+                'details' => $cleanedDetails,
                 'facebook' => $request->input('facebook'),
                 'instagram' => $request->input('instagram'),
                 'twitter' => $request->input('twitter'),
@@ -177,6 +185,7 @@ class TeamMemberController extends Controller
             ], 500);
         }
     }
+
 
 
 

@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('assets-2/css/boxicons.css') }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets-2/vendor/css/core.css') }}" class="template-customizer-core-css"/>
     <link rel="stylesheet" href="{{ asset('assets-2/vendor/css/theme-default.css') }}"
@@ -56,10 +55,8 @@
 {{--        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>--}}
 
 
-
     <script src="{{ asset('assets-1/js/others/axios.min.js') }}"></script>
     <script src="{{ asset('assets-1/js/others/config.js') }}"></script>
-
 
     @yield('header-resources')
 </head>
